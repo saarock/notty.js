@@ -1,4 +1,4 @@
-# Notty (Notification Libary)
+# Toast Interface
 
 The `Toast` interface defines the properties that can be used to configure a toast notification in the `notty` JavaScript library.
 

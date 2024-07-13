@@ -1,0 +1,40 @@
+{
+  "name": "notty",
+  "version": "1.0.0",
+  "description": "The powerful notifications library for the web world.",
+  "main": "dist/notty.min.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "notificationLibary",
+    "web",
+    "notifications"
+  ],
+  "author": "Aayush Basnet",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^18.3.3",
+    "express": "^4.19.2",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@types/jest": "^29.5.12",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.0",
+    "typescript": "^5.5.3"
+  }
+}

@@ -1,0 +1,215 @@
+/*  Main container of the notty libary */
+#notty__container {
+  transition: 3s linear;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  pointer-events: none;
+}
+
+.notty__toast {
+  pointer-events: auto;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 22rem;
+  height: 4rem;
+  align-items: center;
+  border-radius: 0.6rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0.3rem;
+  position: relative;
+}
+.notty__toast__LEFT {
+  float: left;
+  clear: both;
+}
+.notty__toast__RIGHT {
+  float: right;
+  clear: both;
+}
+
+
+
+.notty__success__toast {
+  background-color: green;
+}
+
+.notty__error__toast {
+  background-color: rgb(128, 9, 0);
+}
+
+.notty__loading__toast {
+  background-color: rgb(77, 75, 0);
+}
+
+.notty__cross__icon {
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin: 0.3rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* CSS for Success Icon */
+.notty__success__icon::before {
+  content: "\2713";
+  font-size: 1.5rem;
+  margin: 0.3rem;
+  animation: success-animation 1.5s infinite;
+}
+
+.notty__error__icon::before {
+  content: "\26D4";
+  font-size: 1.5rem;
+  margin: 0.3rem;
+  animation: warning-animation 1.5s infinite;
+}
+
+/* CSS for Loading Icon */
+.notty__loading__icon::before {
+  content: "\2022 \2022 \2022";
+  font-size: 1.5rem;
+  margin: 0.3rem;
+  animation: loading-animation 1s infinite;
+}
+
+.notty__message {
+  text-align: center;
+}
+/* Keyframes for Success Animation */
+@keyframes success-animation {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Keyframes for Warning Animation */
+@keyframes warning-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading-animation {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Define keyframes for the 'come' animation */
+@keyframes come {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes comeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply the animation to an element with the class '.notty__animate__fadeIn' */
+.notty__animate__fadeIn__LEFT {
+  transform: translateX(-20deg);
+  margin: 1rem;
+  animation: come 0.6s ease-in-out;
+}
+
+.notty__animate__fadeIn__RIGHT {
+  transform: translateX(20deg);
+  margin: 1rem;
+  animation: comeRight 0.6s ease-in-out;
+}
+
+@keyframes goLEFT {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateX(5%);
+  }
+
+  90% {
+    opacity: 0.4;
+    transform: translateX(-180%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-200%);
+  }
+}
+
+
+@keyframes goRIGHT {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateX(-5%);
+  }
+
+  90% {
+    opacity: 0.4;
+    transform: translateX(180%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(200%);
+  }
+}
+
+/* Apply the animation to an element with the class '.notty__animation__fadeOut' */
+.notty__animate__fadeOut__RIGHT {
+  animation: goRIGHT 1s ease-in-out;
+  /* Apply the 'go' animation with a duration of 1 second, easing function of ease-in-out */
+  transform: translateX(-20deg);
+}
+
+.notty__animate__fadeOut__LEFT {
+  animation: goLEFT 1s ease-in-out;
+  /* Apply the 'go' animation with a duration of 1 second, easing function of ease-in-out */
+  transform: translateX(-20deg);
+}

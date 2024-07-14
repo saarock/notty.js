@@ -1,38 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>adgfsd</title>
-    <link rel="stylesheet" href="./src/styles/notty.css" />
-  </head>
-  <body>
-    <button>Success</button>
-    <button>Loading</button>
-    <button>Error</button>
-    <div id="notty__container"></div>
-    <script type="module" src="./dist/index.js"></script>
-    <script type="module">
-      import { notty } from "./dist/index.js";
-      const btn = document.getElementsByTagName("button")[0];
-      const btn1 = document.getElementsByTagName("button")[1];
-      const btn2 = document.getElementsByTagName("button")[2];
-      btn.addEventListener("click", () => {
-        notty.success({
-          message:
-            "Success Message",
-          position: "LEFT",
-          comeFrom: "RIGHT",
-          timeOut: 5000,
-        });
-      });
-      btn2.addEventListener("click", () => {
-        notty.loading({message: "Error Message", comeFrom: "RIGHT"})
-      });
-      btn1.addEventListener("click", () => {
-        notty.error({message: "Error Message"})
-      })
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notty Toast Library Demo</title>
+  <!-- Include Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles/notty.css" />
+  <!-- Include Prism.js for syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white">
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold text-center mb-4">Notty Toast Library Demo</h1>
+  <div class="flex space-x-4 mb-4">
+    <button class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none">Success</button>
+    <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none">Loading</button>
+    <button class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none">Error</button>
+  </div>
+  <div id="notty__container" class="mb-8"></div>
+
+  <div class="bg-gray-800 p-4 rounded-md">
+        <pre><code class="language-javascript">
+const btnSuccess = document.querySelector('button:nth-child(1)');
+btnSuccess.addEventListener("click", () => {
+  notty.success({
+    message: "Success Message",
+    position: "LEFT",
+    comeFrom: "RIGHT",
+    timeOut: 5000,
+  });
+});
+        </code></pre>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script type="module" src="./dist/index.js"></script>
+<script type="module">
+  import { notty } from "./dist/index.js";
+  const btnSuccess = document.querySelector('button:nth-child(1)');
+  const btnLoading = document.querySelector('button:nth-child(2)');
+  const btnError = document.querySelector('button:nth-child(3)');
+
+  btnSuccess.addEventListener("click", () => {
+    notty.success({
+      message: "Success Message",
+      position: "LEFT",
+      comeFrom: "RIGHT",
+      timeOut: 5000,
+    });
+  });
+
+  btnLoading.addEventListener("click", () => {
+    notty.loading({ message: "Loading Message", comeFrom: "RIGHT" });
+  });
+
+  btnError.addEventListener("click", () => {
+    notty.error({ message: "Error Message" });
+  });
+</script>
+<!-- Include Prism.js for syntax highlighting -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+</body>
 </html>
-8

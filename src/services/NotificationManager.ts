@@ -75,7 +75,9 @@ class NotificationManager {
 
         toastBox.addEventListener("mouseleave", () => {
           toastBox.style.animationPlayState = "running";
-          this.removeToast(toastBox);
+          setTimeout(() => {
+            this.removeToast(toastBox);
+          }, toast?.timeOut || 5000)
         });
 
         nottyContainer.appendChild(toastBox);
@@ -84,7 +86,7 @@ class NotificationManager {
         toastBox.appendChild(nottyToastBorder);
         setTimeout(() => {
           this.removeToast(toastBox);
-        }, toast.timeOut || 5000)
+        }, toast?.timeOut || 5000)
         toast = this.queue.dequeue();
       }
     } catch (error) {

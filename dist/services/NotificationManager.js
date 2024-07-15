@@ -48,7 +48,9 @@ class NotificationManager {
                     });
                     toastBox.addEventListener("mouseleave", () => {
                         toastBox.style.animationPlayState = "running";
-                        this.removeToast(toastBox);
+                        setTimeout(() => {
+                            this.removeToast(toastBox);
+                        }, (toast === null || toast === void 0 ? void 0 : toast.timeOut) || 5000);
                     });
                     nottyContainer.appendChild(toastBox);
                     const nottyToastBorder = document.createElement("div");
@@ -56,7 +58,7 @@ class NotificationManager {
                     toastBox.appendChild(nottyToastBorder);
                     setTimeout(() => {
                         this.removeToast(toastBox);
-                    }, toast.timeOut || 5000);
+                    }, (toast === null || toast === void 0 ? void 0 : toast.timeOut) || 5000);
                     toast = this.queue.dequeue();
                 }
             }

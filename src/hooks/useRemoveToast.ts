@@ -14,6 +14,7 @@ export default async function useRemoveTost(toastBox: HTMLDivElement) {
     toastBox.classList.add(`${NOTTY_ANIMATE_FADE_OUT_CLASS}__RIGHT`);
     setTimeout(removeToast, 500);
   }
+
   if (toastBox.style.animationPlayState !== "paused") {
     fadeOut();
   }

@@ -13,8 +13,21 @@ import useRemoveTost from "../hooks/useRemoveToast.js";
 import { Queue } from "../models/Queue.js";
 class NotificationManager {
     constructor() {
+        this.startTime = 0;
+        this.pausedTime = 0;
+        this.resumeTime = 0;
         this.queue = new Queue(100);
-        this.initializeEventForToastRemovalByClick();
+        (() => __awaiter(this, void 0, void 0, function* () {
+            yield this.initializeEventForToastRemovalByClick();
+        }))();
+    }
+    startRemoveToastTimer(toastBox, timeOut) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const remainingTime = timeOut - this.pausedTime;
+            setTimeout(() => {
+                this.removeToast(toastBox);
+            }, remainingTime);
+        });
     }
     addToastToQueue(toast, type) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -43,22 +56,22 @@ class NotificationManager {
   </svg>
        </div>
         `;
+                    let interval;
                     toastBox.addEventListener("mouseenter", (e) => {
+                        this.pausedTime = 0;
+                        interval = setInterval(() => {
+                            this.pausedTime += 1000;
+                        }, 1000);
                         toastBox.style.animationPlayState = "paused";
                     });
-                    toastBox.addEventListener("mouseleave", () => {
+                    toastBox.addEventListener("mouseleave", () => __awaiter(this, void 0, void 0, function* () {
                         toastBox.style.animationPlayState = "running";
-                        setTimeout(() => {
-                            this.removeToast(toastBox);
-                        }, (toast === null || toast === void 0 ? void 0 : toast.timeOut) || 5000);
-                    });
+                        yield this.startRemoveToastTimer(toastBox, (toast === null || toast === void 0 ? void 0 : toast.timeOut) ? toast.timeOut : 5000);
+                    }));
                     nottyContainer.appendChild(toastBox);
-                    const nottyToastBorder = document.createElement("div");
-                    nottyToastBorder.classList.add(`notty__toast__border`);
-                    toastBox.appendChild(nottyToastBorder);
                     setTimeout(() => {
                         this.removeToast(toastBox);
-                    }, (toast === null || toast === void 0 ? void 0 : toast.timeOut) || 5000);
+                    }, (toast === null || toast === void 0 ? void 0 : toast.timeOut) ? toast.timeOut : 5000);
                     toast = this.queue.dequeue();
                 }
             }

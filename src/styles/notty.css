@@ -15,7 +15,8 @@
   display: flex;
   justify-content: space-between;
   width: 22rem;
-  height: 4rem;
+  min-height: 4rem;
+  max-height: 22rem;
   align-items: center;
   border-radius: 0.6rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -35,15 +36,15 @@
 
 
 .notty__success__toast {
-  background-color: green;
+  background-color: #005500;
 }
 
 .notty__error__toast {
-  background-color: rgb(128, 9, 0);
+  background-color: rgb(208, 104, 102);
 }
 
 .notty__loading__toast {
-  background-color: rgb(77, 75, 0);
+  background-color: rgb(181, 177, 0);
 }
 
 .notty__cross__icon {
@@ -79,6 +80,7 @@
 
 .notty__message {
   text-align: center;
+  word-wrap: break-word;
 }
 /* Keyframes for Success Animation */
 @keyframes success-animation {

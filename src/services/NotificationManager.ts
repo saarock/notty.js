@@ -4,7 +4,7 @@ import {
   NOTTY_CROSS_ICON_CLASS,
   NOTTY_TOAST_CLASS,
 } from "../constant.js";
-import React from "react";
+
 
 import useAddEventListenerOnTheCutIcon from "../hooks/useAddEventListenerOnTheCutIcon.js";
 import useRemoveTost from "../hooks/useRemoveToast.js";
@@ -16,11 +16,28 @@ import { Toast } from "../types";
  */
 class NotificationManager {
   private queue: Queue<Toast>;
+  private startTime = 0;
+  private pausedTime = 0;
+  private resumeTime: number = 0;
+
 
   constructor() {
     this.queue = new Queue<Toast>(100);
-    this.initializeEventForToastRemovalByClick();
+    (async () => {
+      await this.initializeEventForToastRemovalByClick();
+    })()
   }
+
+  private async startRemoveToastTimer(toastBox: HTMLDivElement, timeOut: number): Promise<void> {
+    const remainingTime: number = timeOut - this.pausedTime;
+
+    setTimeout(() => {
+      this.removeToast(toastBox)
+    }, remainingTime);
+  }
+
+
+
 
   /**
    *
@@ -69,24 +86,25 @@ class NotificationManager {
        </div>
         `;
 
+        type IntervalId = ReturnType<typeof setInterval>;
+        let interval: IntervalId;
         toastBox.addEventListener("mouseenter", (e) => {
+          this.pausedTime = 0;
+          interval = setInterval(() => {
+            this.pausedTime += 1000;
+          }, 1000);
           toastBox.style.animationPlayState = "paused";
         });
 
-        toastBox.addEventListener("mouseleave", () => {
+        toastBox.addEventListener("mouseleave", async () => {
           toastBox.style.animationPlayState = "running";
-          setTimeout(() => {
-            this.removeToast(toastBox);
-          }, toast?.timeOut || 5000)
+          await this.startRemoveToastTimer(toastBox,toast?.timeOut ? toast.timeOut : 5000 );
         });
 
         nottyContainer.appendChild(toastBox);
-        const nottyToastBorder = document.createElement("div");
-        nottyToastBorder.classList.add(`notty__toast__border`);
-        toastBox.appendChild(nottyToastBorder);
         setTimeout(() => {
-          this.removeToast(toastBox);
-        }, toast?.timeOut || 5000)
+          this.removeToast(toastBox)
+        }, toast?.timeOut ? toast.timeOut : 5000);
         toast = this.queue.dequeue();
       }
     } catch (error) {
@@ -101,14 +119,14 @@ class NotificationManager {
    * @param toastBox
    * @note Remove the toast with the help of the hooks;
    */
-  public async removeToast(toastBox: HTMLDivElement) {
-    // setTimeout(async () => {
+  private async removeToast(toastBox: HTMLDivElement) {
       if (toastBox.style.animationPlayState !== "paused") {
-        await useRemoveTost(toastBox);
+       await useRemoveTost(toastBox);
       }
-    // }, 5000);
   }
-  public async initializeEventForToastRemovalByClick(): Promise<void> {
+
+
+  private async initializeEventForToastRemovalByClick(): Promise<void> {
     try {
       await useAddEventListenerOnTheCutIcon();
     } catch (error) {

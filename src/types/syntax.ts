@@ -11,10 +11,3 @@ export interface Toast {
   gotTo?: string;
   RemoveIconClassName?: string;
 }
-
-export interface Notty {
-  border: string;
-  backgroundColor?: string;
-  color?: string;
-  icons?: string;
-}

@@ -11,23 +11,14 @@ import { NOTTY_ANIMATE_FADE_IN_CLASS, NOTTY_CONTAINER_ID_NAME, NOTTY_CROSS_ICON_
 import useAddEventListenerOnTheCutIcon from "../hooks/useAddEventListenerOnTheCutIcon.js";
 import useRemoveTost from "../hooks/useRemoveToast.js";
 import { Queue } from "../models/Queue.js";
+import { time } from "../utils/index.js";
 class NotificationManager {
     constructor() {
-        this.startTime = 0;
-        this.pausedTime = 0;
-        this.resumeTime = 0;
-        this.queue = new Queue(100);
+        this.intervals = new Map();
+        this.queue = new Queue(2);
         (() => __awaiter(this, void 0, void 0, function* () {
             yield this.initializeEventForToastRemovalByClick();
         }))();
-    }
-    startRemoveToastTimer(toastBox, timeOut) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const remainingTime = timeOut - this.pausedTime;
-            setTimeout(() => {
-                this.removeToast(toastBox);
-            }, remainingTime);
-        });
     }
     addToastToQueue(toast, type) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -56,22 +47,33 @@ class NotificationManager {
   </svg>
        </div>
         `;
-                    let interval;
+                    const timeOutDelay = (toast === null || toast === void 0 ? void 0 : toast.timeOut) ? toast.timeOut : 5000;
+                    const startTime = Date.now();
                     toastBox.addEventListener("mouseenter", (e) => {
-                        this.pausedTime = 0;
-                        interval = setInterval(() => {
-                            this.pausedTime += 1000;
-                        }, 1000);
                         toastBox.style.animationPlayState = "paused";
+                        if (this.intervals.has(toastBox)) {
+                            const updatedTimer = this.intervals.get(toastBox);
+                            if (updatedTimer) {
+                                updatedTimer.timeOutDelay = time.getRemainingTime(updatedTimer.startTime, updatedTimer.timeOutDelay);
+                            }
+                        }
                     });
                     toastBox.addEventListener("mouseleave", () => __awaiter(this, void 0, void 0, function* () {
                         toastBox.style.animationPlayState = "running";
-                        yield this.startRemoveToastTimer(toastBox, (toast === null || toast === void 0 ? void 0 : toast.timeOut) ? toast.timeOut : 5000);
+                        if (this.intervals.has(toastBox)) {
+                            const newTimer = this.intervals.get(toastBox);
+                            if (newTimer) {
+                                this.removeToast(toastBox, newTimer.timeOutDelay);
+                            }
+                        }
                     }));
+                    const timer = {
+                        startTime,
+                        timeOutDelay
+                    };
+                    this.intervals.set(toastBox, timer);
                     nottyContainer.appendChild(toastBox);
-                    setTimeout(() => {
-                        this.removeToast(toastBox);
-                    }, (toast === null || toast === void 0 ? void 0 : toast.timeOut) ? toast.timeOut : 5000);
+                    this.removeToast(toastBox, timeOutDelay);
                     toast = this.queue.dequeue();
                 }
             }
@@ -82,11 +84,13 @@ class NotificationManager {
             }
         });
     }
-    removeToast(toastBox) {
+    removeToast(toastBox, timer) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (toastBox.style.animationPlayState !== "paused") {
-                yield useRemoveTost(toastBox);
-            }
+            setTimeout(() => __awaiter(this, void 0, void 0, function* () {
+                if (toastBox.style.animationPlayState !== "paused") {
+                    yield useRemoveTost(toastBox);
+                }
+            }), timer);
         });
     }
     initializeEventForToastRemovalByClick() {

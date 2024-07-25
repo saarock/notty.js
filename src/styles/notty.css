@@ -1,6 +1,6 @@
 /*  Main container of the notty libary */
 #notty__container {
-  transition: 3s linear;
+  transition: 1s linear;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -207,13 +207,13 @@
 
 /* Apply the animation to an element with the class '.notty__animation__fadeOut' */
 .notty__animate__fadeOut__RIGHT {
-  animation: goRIGHT 1s ease-in-out;
+  animation: goRIGHT 0.6s ease-in-out;
   /* Apply the 'go' animation with a duration of 1 second, easing function of ease-in-out */
   transform: translateX(-20deg);
 }
 
 .notty__animate__fadeOut__LEFT {
-  animation: goLEFT 1s ease-in-out;
+  animation: goLEFT 0.6s ease-in-out;
   /* Apply the 'go' animation with a duration of 1 second, easing function of ease-in-out */
   transform: translateX(-20deg);
 }

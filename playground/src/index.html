@@ -59,6 +59,7 @@
   <!-- Scripts -->
   <script type="module">
     import { notty } from "../../dist/index.js";
+
     const btnSuccess = document.querySelector('#successBtn');
     const btnLoading = document.querySelector('#loadingBtn');
     const btnError = document.querySelector('#errorBtn');
@@ -77,7 +78,10 @@
     });
 
     btnSuccess.addEventListener("click", () => {
-      notty.success(getToastOptions());
+      notty.success({
+        ...getToastOptions(),
+        toastsClassName: "bg-gray-900", // Example of additional class, if needed
+      });
     });
 
     btnLoading.addEventListener("click", () => {
@@ -119,4 +123,3 @@
 </div>
 </body>
 </html>
-

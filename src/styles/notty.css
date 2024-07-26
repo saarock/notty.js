@@ -1,6 +1,5 @@
 /*  Main container of the notty libary */
 #notty__container {
-  transition: 1s linear;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -14,16 +13,16 @@
   color: white;
   display: flex;
   justify-content: space-between;
-  width: 22rem;
+  width: 23rem;
   min-height: 4rem;
-  max-height: 22rem;
+  max-height: 30rem;
   align-items: center;
   border-radius: 0.6rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0.3rem;
   position: relative;
 }
+
 .notty__toast__LEFT {
   float: left;
   clear: both;
@@ -128,6 +127,10 @@
     opacity: 0;
     transform: translateX(-100%);
   }
+  90% {
+    transform: translateX(10%);
+
+  }
 
   100% {
     opacity: 1;
@@ -140,7 +143,10 @@
     opacity: 0;
     transform: translateX(100%);
   }
+  90% {
+    transform: translateX(-10%);
 
+  }
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -151,19 +157,19 @@
 .notty__animate__fadeIn__LEFT {
   transform: translateX(-20deg);
   margin: 1rem;
-  animation: come 0.6s ease-in-out;
+  animation: come 0.5s ease-in-out;
 }
 
 .notty__animate__fadeIn__RIGHT {
   transform: translateX(20deg);
   margin: 1rem;
-  animation: comeRight 0.6s ease-in-out;
+  animation: comeRight 0.5s ease-in-out;
 }
 
 @keyframes goLEFT {
   0% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(10%);
   }
 
   10% {
@@ -186,7 +192,7 @@
 @keyframes goRIGHT {
   0% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(-10%);
   }
 
   10% {
@@ -207,13 +213,13 @@
 
 /* Apply the animation to an element with the class '.notty__animation__fadeOut' */
 .notty__animate__fadeOut__RIGHT {
-  animation: goRIGHT 0.6s ease-in-out;
+  animation: goLEFT 0.5s ease-in-out;
   /* Apply the 'go' animation with a duration of 1 second, easing function of ease-in-out */
   transform: translateX(-20deg);
 }
 
 .notty__animate__fadeOut__LEFT {
-  animation: goLEFT 0.6s ease-in-out;
+  animation: goLEFT 0.5s ease-in-out;
   /* Apply the 'go' animation with a duration of 1 second, easing function of ease-in-out */
   transform: translateX(-20deg);
 }

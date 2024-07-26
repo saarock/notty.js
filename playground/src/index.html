@@ -1,125 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notty Toast Library Demo</title>
-  <!-- Include Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../src/styles/notty.css" />
-  <!-- Include Prism.js for syntax highlighting -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-900 text-white">
-<div class="container mx-auto p-4">
-  <h1 class="text-3xl font-bold text-center mb-4">Notty Toast Library Playground</h1>
-  <div class="bg-gray-800 p-4 rounded-md mb-4">
-    <form id="toastForm" class="space-y-4">
-      <div>
-        <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
-        <input type="text" id="message" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded" placeholder="Enter toast message">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notty Toast Library Demo</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../src/styles/notty.css" />
+    <!-- Include Prism.js for syntax highlighting -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-900 text-white">
+    <div class="container mx-auto p-4">
+      <h1 class="text-3xl font-bold text-center mb-4">
+        Notty Toast Library Playground
+      </h1>
+      <div class="bg-gray-800 p-4 rounded-md mb-4">
+        <form id="toastForm" class="space-y-4">
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-300"
+              >Message</label
+            >
+            <input
+              type="text"
+              id="message"
+              class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded"
+              placeholder="Enter toast message"
+            />
+          </div>
+          <div>
+            <label for="timeOut" class="block text-sm font-medium text-gray-300"
+              >Timeout (ms)</label
+            >
+            <input
+              type="number"
+              id="timeOut"
+              class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded"
+              placeholder="Enter timeout"
+            />
+          </div>
+          <div>
+            <label
+              for="position"
+              class="block text-sm font-medium text-gray-300"
+              >Position</label
+            >
+            <select
+              id="position"
+              class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded"
+            >
+              <option value="LEFT">LEFT</option>
+              <option value="RIGHT">RIGHT</option>
+              <option value="TOP_LEFT">TOP LEFT</option>
+              <option value="TOP_RIGHT">TOP RIGHT</option>
+              <option value="BOTTOM_LEFT">BOTTOM LEFT</option>
+              <option value="BOTTOM_RIGHT">BOTTOM RIGHT</option>
+            </select>
+          </div>
+          <div>
+            <label
+              for="comeFrom"
+              class="block text-sm font-medium text-gray-300"
+              >Come From</label
+            >
+            <select
+              id="comeFrom"
+              class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded"
+            >
+              <option value="LEFT">LEFT</option>
+              <option value="RIGHT">RIGHT</option>
+              <option value="TOP">TOP</option>
+              <option value="BOTTOM">BOTTOM</option>
+            </select>
+          </div>
+          <div class="flex space-x-4">
+            <button
+              type="button"
+              id="successBtn"
+              class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none"
+            >
+              Success
+            </button>
+            <button
+              type="button"
+              id="loadingBtn"
+              class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none"
+            >
+              Loading
+            </button>
+            <button
+              type="button"
+              id="errorBtn"
+              class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none"
+            >
+              Error
+            </button>
+          </div>
+          <div class="flex space-x-4 mt-4">
+            <button
+              type="button"
+              id="bounceBtn"
+              class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded focus:outline-none"
+            >
+              Bounce
+            </button>
+            <button
+              type="button"
+              id="slideBtn"
+              class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded focus:outline-none"
+            >
+              Slide
+            </button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label for="timeOut" class="block text-sm font-medium text-gray-300">Timeout (ms)</label>
-        <input type="number" id="timeOut" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded" placeholder="Enter timeout">
+      <div id="notty__container"></div>
+
+      <!-- Scripts -->
+      <!--<script type="module" src="../../dist/index.js"></script>-->
+      <script type="module">
+        import { notty } from "../../dist/index.js";
+        const btnSuccess = document.querySelector("#successBtn");
+        const btnLoading = document.querySelector("#loadingBtn");
+        const btnError = document.querySelector("#errorBtn");
+        const btnBounce = document.querySelector("#bounceBtn");
+        const btnSlide = document.querySelector("#slideBtn");
+        const messageInput = document.querySelector("#message");
+        const timeOutInput = document.querySelector("#timeOut");
+        const positionSelect = document.querySelector("#position");
+        const comeFromSelect = document.querySelector("#comeFrom");
+
+        btnSuccess.addEventListener("click", () => {
+          notty.success({
+            message: messageInput.value || "Success Message",
+            comeFrom: comeFromSelect.value,
+            position: positionSelect.value,
+            toatsClassName: "bg-gray-900",
+            timeOut: parseInt(timeOutInput.value) || 5000,
+          });
+        });
+
+        btnLoading.addEventListener("click", () => {
+          notty.loading({
+            message: messageInput.value || "Loading Message",
+            comeFrom: comeFromSelect.value,
+            position: positionSelect.value,
+            timeOut: parseInt(timeOutInput.value) || 5000,
+          });
+        });
+
+        btnError.addEventListener("click", () => {
+          notty.error({
+            message: messageInput.value || "Error Message",
+            position: positionSelect.value,
+            comeFrom: comeFromSelect.value,
+            timeOut: parseInt(timeOutInput.value) || 5000,
+          });
+        });
+
+        btnBounce.addEventListener("click", () => {
+          notty.bounce({
+            message: messageInput.value || "Bounce Message",
+            position: positionSelect.value,
+            comeFrom: comeFromSelect.value,
+            timeOut: parseInt(timeOutInput.value) || 5000,
+          });
+        });
+
+        btnSlide.addEventListener("click", () => {
+          notty.slide({
+            message: messageInput.value || "Slide Message",
+            position: positionSelect.value,
+            comeFrom: comeFromSelect.value,
+            timeOut: parseInt(timeOutInput.value) || 5000,
+          });
+        });
+      </script>
+
+      <!-- Include Prism.js for syntax highlighting -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+
+      <!-- GitHub Link -->
+      <div class="fixed bottom-4 right-4 text-gray-400">
+        <a
+          href="https://github.com/saarock/notty"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center space-x-1"
+        >
+          <svg
+            class="h-5 w-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 0C4.477 0 0 4.477 0 10c0 4.419 2.865 8.17 6.839 9.491.5.092.682-.217.682-.48 0-.237-.008-.866-.013-1.699-2.782.604-3.37-1.344-3.37-1.344-.454-1.153-1.108-1.46-1.108-1.46-.906-.618.069-.605.069-.605 1.003.07 1.531 1.03 1.531 1.03.892 1.531 2.34 1.089 2.913.831.092-.645.35-1.088.635-1.338-2.22-.253-4.555-1.11-4.555-4.942 0-1.09.39-1.984 1.032-2.68-.103-.253-.448-1.27.097-2.647 0 0 .84-.268 2.75 1.025.8-.223 1.654-.334 2.504-.338.848.004 1.705.115 2.504.338 1.908-1.293 2.746-1.025 2.746-1.025.548 1.377.201 2.394.098 2.647.644.696 1.031 1.59 1.031 2.68 0 3.841-2.338 4.686-4.567 4.934.359.308.678.916.678 1.847 0 1.334-.012 2.411-.012 2.74 0 .266.18.577.688.478C17.138 18.165 20 14.418 20 10c0-5.523-4.477-10-10-10z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span>View on GitHub</span>
+        </a>
       </div>
-      <div>
-        <label for="position" class="block text-sm font-medium text-gray-300">Position</label>
-        <select id="position" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
-          <option value="LEFT">LEFT</option>
-          <option value="RIGHT">RIGHT</option>
-          <option value="TOP_LEFT">TOP LEFT</option>
-          <option value="TOP_RIGHT">TOP RIGHT</option>
-          <option value="BOTTOM_LEFT">BOTTOM LEFT</option>
-          <option value="BOTTOM_RIGHT">BOTTOM RIGHT</option>
-        </select>
-      </div>
-      <div>
-        <label for="comeFrom" class="block text-sm font-medium text-gray-300">Come From</label>
-        <select id="comeFrom" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
-          <option value="LEFT">LEFT</option>
-          <option value="RIGHT">RIGHT</option>
-          <option value="TOP">TOP</option>
-          <option value="BOTTOM">BOTTOM</option>
-        </select>
-      </div>
-      <div class="flex space-x-4">
-        <button type="button" id="successBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none">Success</button>
-        <button type="button" id="loadingBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none">Loading</button>
-        <button type="button" id="errorBtn" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none">Error</button>
-      </div>
-      <div class="flex space-x-4 mt-4">
-        <button type="button" id="bounceBtn" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded focus:outline-none">Bounce</button>
-        <button type="button" id="slideBtn" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded focus:outline-none">Slide</button>
-      </div>
-    </form>
-  </div>
-  <div id="notty__container"></div>
-
-  <!-- Scripts -->
-  <script type="module">
-    import { notty } from "../../dist/index.js";
-
-    const btnSuccess = document.querySelector('#successBtn');
-    const btnLoading = document.querySelector('#loadingBtn');
-    const btnError = document.querySelector('#errorBtn');
-    const btnBounce = document.querySelector('#bounceBtn');
-    const btnSlide = document.querySelector('#slideBtn');
-    const messageInput = document.querySelector('#message');
-    const timeOutInput = document.querySelector('#timeOut');
-    const positionSelect = document.querySelector('#position');
-    const comeFromSelect = document.querySelector('#comeFrom');
-
-    const getToastOptions = () => ({
-      message: messageInput.value || "Default Message",
-      position: positionSelect.value,
-      comeFrom: comeFromSelect.value,
-      timeOut: parseInt(timeOutInput.value) || 5000,
-    });
-
-    btnSuccess.addEventListener("click", () => {
-      notty.success({
-        ...getToastOptions(),
-        toastsClassName: "bg-gray-900", // Example of additional class, if needed
-      });
-    });
-
-    btnLoading.addEventListener("click", () => {
-      notty.loading(getToastOptions());
-    });
-
-    btnError.addEventListener("click", () => {
-      notty.error(getToastOptions());
-    });
-
-    btnBounce.addEventListener("click", () => {
-      notty.custom({
-        ...getToastOptions(),
-        animation: "bounce",
-      });
-    });
-
-    btnSlide.addEventListener("click", () => {
-      notty.custom({
-        ...getToastOptions(),
-        animation: "slide",
-      });
-    });
-  </script>
-
-  <!-- Include Prism.js for syntax highlighting -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
-
-  <!-- GitHub Link -->
-  <div class="fixed bottom-4 right-4 text-gray-400">
-    <a href="https://github.com/saarock/notty" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1">
-      <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.419 2.865 8.17 6.839 9.491.5.092.682-.217.682-.48 0-.237-.008-.866-.013-1.699-2.782.604-3.37-1.344-3.37-1.344-.454-1.153-1.108-1.46-1.108-1.46-.906-.618.069-.605.069-.605 1.003.07 1.531 1.03 1.531 1.03.892 1.531 2.34 1.089 2.913.831.092-.645.35-1.088.635-1.338-2.22-.253-4.555-1.11-4.555-4.942 0-1.09.39-1.984 1.032-2.68-.103-.253-.448-1.27.097-2.647 0 0 .84-.268 2.75 1.025.8-.223 1.654-.334 2.504-.338.848.004 1.705.115 2.504.338 1.908-1.293 2.746-1.025 2.746-1.025.548 1.377.201 2.394.098 2.647.644.696 1.031 1.59 1.031 2.68 0 3.841-2.338 4.686-4.567 4.934.359.308.678.916.678 1.847 0 1.334-.012 2.411-.012 2.74 0 .266.18.577.688.478C17.138 18.165 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
-      </svg>
-      <span>View on GitHub</span>
-    </a>
-  </div>
-</div>
-</body>
+    </div>
+  </body>
 </html>
+

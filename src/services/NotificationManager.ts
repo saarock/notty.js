@@ -62,7 +62,8 @@ class NotificationManager {
           `notty__${type}__toast`,
           `${NOTTY_TOAST_CLASS}`,
           `${NOTTY_TOAST_CLASS}__${toast.position || "LEFT"}`,
-          `${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`
+          `${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`,
+            `${toast.toatsClassName}`
         );
         toastBox.innerHTML = `
          <div class="notty__${type}__icon ${toast.toastIconClassName}">

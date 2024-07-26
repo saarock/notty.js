@@ -5,12 +5,17 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 ## Table of Contents
 
 1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Demo HTML](#demo-html)
-4. [Example Integration](#example-integration)
    - [Pure JavaScript](#pure-javascript)
    - [WordPress](#wordpress)
-5. [License](#license)
+2. [Usage](#usage)
+   - [Pure JavaScript](#pure-javascript-usage)
+   - [WordPress](#wordpress-usage)
+3. [Demo HTML](#demo-html)
+4. [Example Integration](#example-integration)
+   - [Pure JavaScript](#pure-javascript-example)
+   - [WordPress](#wordpress-example)
+5. [Features](#features)
+6. [License](#license)
 
 ## Installation
 
@@ -28,7 +33,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 
 ## Usage
 
-### Pure JavaScript
+### Pure JavaScript Usage
 
 1. **Include the Required Files** in your HTML file:
 
@@ -71,7 +76,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     </script>
     ```
 
-### WordPress
+### WordPress Usage
 
 1. **Enqueue Scripts and Styles**:
 
@@ -190,6 +195,14 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
       });
     </script>
     ```
+
+## Features
+
+- **Customizable Notifications**: Tailor the appearance and behavior of toast notifications with options for position, animation, timeout, and more.
+- **Multiple Notification Types**: Display success, error, and loading notifications with predefined styles.
+- **Easy Integration**: Simple steps to integrate with both pure JavaScript and WordPress environments.
+- **Tailwind CSS**: Leverages Tailwind CSS for styling, allowing for further customization and consistency with your project’s design.
+- **Prism.js Support**: Includes Prism.js for syntax highlighting in examples and demos.
 
 ## License
 

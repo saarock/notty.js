@@ -32,28 +32,24 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 
 1. **Include the Required Files** in your HTML file:
 
-    ```html
+  ```html
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Notty Toast Library Demo</title>
-        <!-- Include Tailwind CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./src/styles/notty.css" />
-        <!-- Include Prism.js for syntax highlighting -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     </head>
     <body class="bg-gray-900 text-white">
-        <!-- Your HTML content here -->
+        <!-- Notty uses this container, so you have to put it at the top of the file which is in every folder -->
         <div id="notty__container"></div>
 
         <!-- Include Notty Toast Library JS -->
         <script type="module" src="./dist/index.js"></script>
     </body>
     </html>
-    ```
+   ```
 
 2. **Initialize and Use the Library**:
 
@@ -170,8 +166,8 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
       btnSuccess.addEventListener("click", () => {
         notty.success({
           message: messageInput.value || "Success Message",
+           comeFrom: comeFromSelect.value,
           position: positionSelect.value,
-          comeFrom: comeFromSelect.value,
           timeOut: parseInt(timeOutInput.value) || 5000,
         });
       });
@@ -180,12 +176,17 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
         notty.loading({
           message: messageInput.value || "Loading Message",
           comeFrom: comeFromSelect.value,
+          position: positionSelect.value,
+          timeOut: parseInt(timeOutInput.value) || 5000,
         });
       });
 
       btnError.addEventListener("click", () => {
         notty.error({
           message: messageInput.value || "Error Message",
+          comeFrom: comeFromSelect.value,
+          position: positionSelect.value,
+          timeOut: parseInt(timeOutInput.value) || 5000,
         });
       });
     </script>

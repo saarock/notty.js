@@ -44,13 +44,9 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Notty Toast Library Demo</title>
-        <!-- Include Tailwind CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="./src/styles/notty.css" />
-        <!-- Include Prism.js for syntax highlighting -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     </head>
-    <body class="bg-gray-900 text-white">
+    <body>
         <!-- Your HTML content here -->
         <div id="notty__container"></div>
 
@@ -84,21 +80,11 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 
     ```php
     function enqueue_notty_toast_assets() {
-        // Enqueue Tailwind CSS
-        wp_enqueue_style('tailwindcss', 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-
-        // Enqueue Prism.js CSS
-        wp_enqueue_style('prismjs', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css');
-
         // Enqueue Notty Toast Library CSS
         wp_enqueue_style('notty-toast-css', get_template_directory_uri() . '/path-to-your/notty.css');
 
         // Enqueue Notty Toast Library JS
         wp_enqueue_script('notty-toast-js', get_template_directory_uri() . '/path-to-your/dist/index.js', array(), false, true);
-
-        // Enqueue Prism.js JS
-        wp_enqueue_script('prismjs-js', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js', array(), false, true);
-        wp_enqueue_script('prismjs-js-components', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js', array(), false, true);
     }
     add_action('wp_enqueue_scripts', 'enqueue_notty_toast_assets');
     ```
@@ -116,37 +102,37 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
         <title>Notty Toast Library Demo</title>
         <?php wp_head(); ?>
     </head>
-    <body class="bg-gray-900 text-white">
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold text-center mb-4">Notty Toast Library Playground</h1>
-        <div class="bg-gray-800 p-4 rounded-md mb-4">
-            <form id="toastForm" class="space-y-4">
+    <body>
+    <div class="container">
+        <h1>Notty Toast Library Playground</h1>
+        <div>
+            <form id="toastForm">
                 <div>
-                    <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
-                    <input type="text" id="message" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded" placeholder="Enter toast message">
+                    <label for="message">Message</label>
+                    <input type="text" id="message" placeholder="Enter toast message">
                 </div>
                 <div>
-                    <label for="timeOut" class="block text-sm font-medium text-gray-300">Timeout (ms)</label>
-                    <input type="number" id="timeOut" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded" placeholder="Enter timeout">
+                    <label for="timeOut">Timeout (ms)</label>
+                    <input type="number" id="timeOut" placeholder="Enter timeout">
                 </div>
                 <div>
-                    <label for="position" class="block text-sm font-medium text-gray-300">Position</label>
-                    <select id="position" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
+                    <label for="position">Position</label>
+                    <select id="position">
                         <option value="LEFT">LEFT</option>
                         <option value="RIGHT">RIGHT</option>
                     </select>
                 </div>
                 <div>
-                    <label for="comeFrom" class="block text-sm font-medium text-gray-300">Come From</label>
-                    <select id="comeFrom" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
+                    <label for="comeFrom">Come From</label>
+                    <select id="comeFrom">
                         <option value="LEFT">LEFT</option>
                         <option value="RIGHT">RIGHT</option>
                     </select>
                 </div>
-                <div class="flex space-x-4">
-                    <button type="button" id="successBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none">Success</button>
-                    <button type="button" id="loadingBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none">Loading</button>
-                    <button type="button" id="errorBtn" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none">Error</button>
+                <div>
+                    <button type="button" id="successBtn">Success</button>
+                    <button type="button" id="loadingBtn">Loading</button>
+                    <button type="button" id="errorBtn">Error</button>
                 </div>
             </form>
         </div>
@@ -201,8 +187,6 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 - **Customizable Notifications**: Tailor the appearance and behavior of toast notifications with options for position, animation, timeout, and more.
 - **Multiple Notification Types**: Display success, error, and loading notifications with predefined styles.
 - **Easy Integration**: Simple steps to integrate with both pure JavaScript and WordPress environments.
-- **Tailwind CSS**: Leverages Tailwind CSS for styling, allowing for further customization and consistency with your project’s design.
-- **Prism.js Support**: Includes Prism.js for syntax highlighting in examples and demos.
 
 ## License
 

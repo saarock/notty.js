@@ -1,6 +1,6 @@
 
 import { NOTTY_CONTAINER_ID_NAME, NOTTY_CROSS_ICON_CLASS, NOTTY_TOAST_CLASS, NOTTY_ANIMATE_FADE_OUT_CLASS } from '../../src/constant';
-import useAddEventListenerOnTheCutIcon from '../../src/useAddEventListenerOnTheCutIcon';
+import useAddEventListenerOnTheCutIcon from '../../dist/hooks/useAddEventListenerOnTheCutIcon';
 
 describe('useAddEventListenerOnTheCutIcon', () => {
   beforeEach(() => {

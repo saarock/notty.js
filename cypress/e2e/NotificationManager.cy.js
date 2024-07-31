@@ -1,6 +1,6 @@
 import { NOTTY_CONTAINER_ID_NAME, NOTTY_CROSS_ICON_CLASS, NOTTY_TOAST_CLASS } from '../../src/constant';
-import { nottyManager } from '../../src/NotificationManager';
-import { Queue } from '../../src/models/Queue';
+import { nottyManager } from '../../dist/services/NotificationManager';
+import { Queue } from '../../dist/models/Queue';
 
 describe('NotificationManager', () => {
   beforeEach(() => {

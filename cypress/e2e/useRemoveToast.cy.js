@@ -39,7 +39,6 @@ describe('useRemoveToast', () => {
     useRemoveToast(toastBox);
 
     setTimeout(() => {
-      console.log('Checking if toastBox is null immediately:', document.getElementById('toastBox'));
       expect(document.getElementById('toastBox')).to.be.null;
       done();
     }, 500); // Short duration for immediate removal check

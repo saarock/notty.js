@@ -40,21 +40,22 @@ The `Toast` interface defines the properties that can be used to configure a toa
 ## Example Usage
 
 ```typescript
-import { Toast } from 'notty';
+import { Toast } from "notty";
 
 // Example toast configuration
 const toastConfig: Toast = {
-  message: 'Hello, world!',
+  message: "Hello, world!",
   timeOut: 3000,
-  icons: 'bell-icon',
-  position: 'RIGHT',
-  comeFrom: 'LEFT',
-  toatsClassName: 'custom-toast',
-  toastIconClassName: 'custom-icon',
-  toastMessageClassName: 'custom-message',
-  gotTo: 'https://example.com',
-  RemoveIconClassName: 'remove-icon'
+  icons: "bell-icon",
+  position: "RIGHT",
+  comeFrom: "LEFT",
+  toatsClassName: "custom-toast",
+  toastIconClassName: "custom-icon",
+  toastMessageClassName: "custom-message",
+  gotTo: "https://example.com",
+  RemoveIconClassName: "remove-icon",
 };
 
 // Display the toast using notty.showToast(toastConfig);
 notty.showToast(toastConfig);
+```

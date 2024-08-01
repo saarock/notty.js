@@ -1,13 +1,13 @@
-import { time } from '../../src/utils/Time';
+import { time } from "../../src/utils/Time";
 
-describe('Time', () => {
-  it('should return the correct remaining time', () => {
+describe("Time", () => {
+  it("should return the correct remaining time", () => {
     const startTime = Date.now();
     const timeoutDelay = 5000; // 5 seconds
 
     // Immediate check
     let remainingTime = time.getRemainingTime(startTime, timeoutDelay);
-    expect(remainingTime).to.be.closeTo(timeoutDelay, 10); 
+    expect(remainingTime).to.be.closeTo(timeoutDelay, 10);
 
     // Check after 2 seconds
     cy.wait(2000).then(() => {

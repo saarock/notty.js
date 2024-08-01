@@ -1,4 +1,4 @@
 export interface Timer {
-    startTime: number;
-    timeOutDelay: number;
+  startTime: number;
+  timeOutDelay: number;
 }

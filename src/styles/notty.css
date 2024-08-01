@@ -32,8 +32,6 @@
   clear: both;
 }
 
-
-
 .notty__success__toast {
   background-color: #005500;
 }
@@ -83,7 +81,6 @@
 }
 /* Keyframes for Success Animation */
 @keyframes success-animation {
-
   0%,
   100% {
     opacity: 0;
@@ -110,7 +107,6 @@
 }
 
 @keyframes loading-animation {
-
   0%,
   100% {
     opacity: 0;
@@ -129,7 +125,6 @@
   }
   90% {
     transform: translateX(10%);
-
   }
 
   100% {
@@ -145,7 +140,6 @@
   }
   90% {
     transform: translateX(-10%);
-
   }
   100% {
     opacity: 1;
@@ -187,7 +181,6 @@
     transform: translateX(-200%);
   }
 }
-
 
 @keyframes goRIGHT {
   0% {

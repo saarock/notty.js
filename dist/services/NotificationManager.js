@@ -11,7 +11,7 @@ import { NOTTY_ANIMATE_FADE_IN_CLASS, NOTTY_CONTAINER_ID_NAME, NOTTY_CROSS_ICON_
 import useAddEventListenerOnTheCutIcon from "../hooks/useAddEventListenerOnTheCutIcon.js";
 import useRemoveTost from "../hooks/useRemoveToast.js";
 import { Queue } from "../models/Queue.js";
-import { time } from "../utils/index.js";
+import { time } from "../../src/utils/index.js";
 class NotificationManager {
     constructor() {
         this.intervals = new Map();

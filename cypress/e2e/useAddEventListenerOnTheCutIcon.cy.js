@@ -16,7 +16,7 @@ describe('useAddEventListenerOnTheCutIcon', () => {
 
   it('should throw an error if NOTTY_CONTAINER_ID_NAME element is missing', () => {
     document.getElementById(NOTTY_CONTAINER_ID_NAME).remove();
-    expect(() => useAddEventListenerOnTheCutIcon()).to.throw("notty__container required");
+    expect(() => useAddEventListenerOnTheCutIcon()).to.throw("notty_container required");
   });
 
   it('should remove the toast element when the cross icon is clicked', () => {

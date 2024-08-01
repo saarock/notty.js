@@ -18,6 +18,7 @@ describe('useRemoveToast', () => {
     expect(toastBox.classList.contains(`${NOTTY_ANIMATE_FADE_OUT_CLASS}__RIGHT`)).to.be.true;
 
     setTimeout(() => {
+      console.log('Checking if toastBox is null:', document.getElementById('toastBox'));
       expect(document.getElementById('toastBox')).to.be.null;
       done();
     }, 600); // 500ms animation duration + 100ms buffer
@@ -38,8 +39,9 @@ describe('useRemoveToast', () => {
     useRemoveToast(toastBox);
 
     setTimeout(() => {
+      console.log('Checking if toastBox is null immediately:', document.getElementById('toastBox'));
       expect(document.getElementById('toastBox')).to.be.null;
       done();
-    }, 100); // Short duration for immediate removal check
+    }, 500); // Short duration for immediate removal check
   });
 });

@@ -4,7 +4,7 @@ import {
   NOTTY_TOAST_CLASS,
   NOTTY_ANIMATE_FADE_OUT_CLASS,
 } from "../../src/constant";
-import useAddEventListenerOnTheCutIcon from "../../dist/hooks/useAddEventListenerOnTheCutIcon";
+import useAddEventListenerOnTheCutIcon from "../../dist/hooks/useAddEventListenerOnTheCutIcon.js";
 
 describe("useAddEventListenerOnTheCutIcon", () => {
   beforeEach(() => {

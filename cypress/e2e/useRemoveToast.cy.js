@@ -2,7 +2,7 @@ import {
   NOTTY_ANIMATE_FADE_IN_CLASS,
   NOTTY_ANIMATE_FADE_OUT_CLASS,
 } from "../../src/constant";
-import useRemoveToast from "../../dist/hooks/useRemoveToast";
+import useRemoveToast from "../../dist/hooks/useRemoveToast.js";
 
 describe("useRemoveToast", () => {
   beforeEach(() => {

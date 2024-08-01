@@ -1,4 +1,4 @@
-import { time } from "../../src/utils/Time";
+import { time } from "../../src/utils/index.js";
 
 describe("Time", () => {
   it("should return the correct remaining time", () => {

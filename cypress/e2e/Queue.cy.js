@@ -1,4 +1,4 @@
-import { Queue } from "../../dist/models/Queue";
+import { Queue } from "../../dist/models/index.js";
 
 describe("Queue", () => {
   let queue;

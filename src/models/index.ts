@@ -1,2 +1,2 @@
 import { Queue, queue } from "./Queue.js";
-export {Queue, queue}
+export { Queue, queue };

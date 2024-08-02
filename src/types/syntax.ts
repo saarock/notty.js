@@ -4,7 +4,7 @@ export interface Toast {
   nottyClass?: number;
   icons?: string;
   position?: "LEFT" | "RIGHT";
-  comeFrom?: "LEFT" | "RIGHT"
+  comeFrom?: "LEFT" | "RIGHT";
   toatsClassName?: string;
   toastIconClassName?: string;
   toastMessageClassName?: string;

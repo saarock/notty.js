@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notty Toast Library Demo</title>
-  <!-- Include Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../src/styles/notty.css" />
-  <!-- Include Prism.js for syntax highlighting -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-900 text-white">
 <div class="container mx-auto p-4">
@@ -50,6 +47,7 @@
 <!-- Scripts -->
 <!--<script type="module" src="../../dist/index.js"></script>-->
 <script type="module">
+
   import { notty } from "../../dist/index.js";
   const btnSuccess = document.querySelector('#successBtn');
   const btnLoading = document.querySelector('#loadingBtn');
@@ -62,9 +60,11 @@
   btnSuccess.addEventListener("click", () => {
     notty.success({
       message: messageInput.value || "Success Message",
-      position: positionSelect.value,
       comeFrom: comeFromSelect.value,
+      position: positionSelect.value,
+      toatsClassName: "bg-gray-900",
       timeOut: parseInt(timeOutInput.value) || 5000,
+
     });
   });
 
@@ -72,20 +72,23 @@
     notty.loading({
       message: messageInput.value || "Loading Message",
       comeFrom: comeFromSelect.value,
+      position: positionSelect.value,
+
+      timeOut: parseInt(timeOutInput.value) || 5000,
     });
   });
 
   btnError.addEventListener("click", () => {
     notty.error({
       message: messageInput.value || "Error Message",
+      position: positionSelect.value,
+      comeFrom: comeFromSelect.value,
+      timeOut: parseInt(timeOutInput.value) || 5000,
     });
   });
 
 
 </script>
-<!-- Include Prism.js for syntax highlighting -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
 
 <!-- GitHub Link -->
 <div class="fixed bottom-4 right-4 text-gray-400">

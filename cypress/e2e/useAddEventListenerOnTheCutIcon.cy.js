@@ -18,7 +18,6 @@ describe('useAddEventListenerOnTheCutIcon', () => {
     
     try {
       await useAddEventListenerOnTheCutIcon();
-      // Se la funzione non lancia un errore, fallo fallire manualmente
       throw new Error('Expected error was not thrown');
     } catch (err) {
       expect(err.message).to.equal('notty__container required');
@@ -29,8 +28,7 @@ describe('useAddEventListenerOnTheCutIcon', () => {
     useAddEventListenerOnTheCutIcon();
     const crossIcon = document.querySelector(`.${NOTTY_CROSS_ICON_CLASS}`);
     const toast = document.querySelector(`.${NOTTY_TOAST_CLASS}`);
-
-    // Simulate click on cross icon
+    
     crossIcon.click();
 
     // Check if the toast element is removed after the animation

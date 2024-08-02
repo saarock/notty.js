@@ -35,6 +35,7 @@ describe('useRemoveToast', () => {
 
   it('should remove the toastBox element immediately if no animation is set', (done) => {
     const toastBox = document.getElementById('toastBox');
+    
     toastBox.style.animationPlayState = '';
     useRemoveToast(toastBox);
 

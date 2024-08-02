@@ -2,6 +2,13 @@
 
 Thank you for considering contributing to Notty! Here are some guidelines to help you get started.
 
+## Adding code
+If you change/add code, you need to be sure that it doesn't make conflicts, before consider to create a PR run all the tests with this command:
+```   
+   npx cypress run
+```
+It will run all the cypress tests and if all the tests passes you can create a PR.
+
 ## How to Report Bugs
 
 1. Search the [issues](https://github.com/your-username/notty-toast-library/issues) to see if the bug has already been reported.

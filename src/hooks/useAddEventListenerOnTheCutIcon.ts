@@ -17,17 +17,16 @@ export default async function useAddEventListenerOnTheCutIcon() {
       const toast = target.closest(`.${NOTTY_TOAST_CLASS}`) as HTMLElement;
       if (toast) {
         toast.style.animationPlayState = "running";
-       function remove() {
-        if (toast.style.animationPlayState !== "paused") {
-          toast.classList.add(`${NOTTY_ANIMATE_FADE_OUT_CLASS}__LEFT`);
-          setTimeout(() => {
-            toast.remove();
-          }, 500);
+        function remove() {
+          if (toast.style.animationPlayState !== "paused") {
+            toast.classList.add(`${NOTTY_ANIMATE_FADE_OUT_CLASS}__LEFT`);
+            setTimeout(() => {
+              toast.remove();
+            }, 500);
+          }
         }
-      }
 
-      remove();
-
+        remove();
       }
     }
   });

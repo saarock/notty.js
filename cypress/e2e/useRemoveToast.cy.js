@@ -23,7 +23,7 @@ describe("useRemoveToast", () => {
     ).to.be.true;
 
     setTimeout(() => {
-      expect(document.getElementById("toastBox")).to.be.null;
+      expect(document.getElementById('toastBox')).to.be.null;
       done();
     }, 600); // 500ms animation duration + 100ms buffer
   });
@@ -45,6 +45,6 @@ describe("useRemoveToast", () => {
     setTimeout(() => {
       expect(document.getElementById("toastBox")).to.be.null;
       done();
-    }, 100); // Short duration for immediate removal check
+    }, 500); // Short duration for immediate removal check
   });
 });

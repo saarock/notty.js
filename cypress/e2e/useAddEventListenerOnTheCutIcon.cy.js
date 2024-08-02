@@ -1,3 +1,6 @@
+
+import { NOTTY_CONTAINER_ID_NAME, NOTTY_CROSS_ICON_CLASS, NOTTY_TOAST_CLASS, NOTTY_ANIMATE_FADE_OUT_CLASS } from '../../src/constant';
+import useAddEventListenerOnTheCutIcon from '../../dist/hooks/useAddEventListenerOnTheCutIcon';
 import {
   NOTTY_CONTAINER_ID_NAME,
   NOTTY_CROSS_ICON_CLASS,
@@ -6,7 +9,11 @@ import {
 } from "../../src/constant";
 import useAddEventListenerOnTheCutIcon from "../../dist/hooks/useAddEventListenerOnTheCutIcon.js";
 
-describe("useAddEventListenerOnTheCutIcon", () => {
+
+describe('useAddEventListenerOnTheCutIcon', () => {
+
+  
+  
   beforeEach(() => {
     // Set up the DOM element
     document.body.innerHTML = `
@@ -18,11 +25,24 @@ describe("useAddEventListenerOnTheCutIcon", () => {
     `;
   });
 
+
+  it('should throw an error if NOTTY_CONTAINER_ID_NAME element is missing', async () => {
+    document.getElementById(NOTTY_CONTAINER_ID_NAME).remove();
+    
+    try {
+      await useAddEventListenerOnTheCutIcon();
+      // Se la funzione non lancia un errore, fallo fallire manualmente
+      throw new Error('Expected error was not thrown');
+    } catch (err) {
+      expect(err.message).to.equal('notty__container required');
+    }
+
   it("should throw an error if NOTTY_CONTAINER_ID_NAME element is missing", () => {
     document.getElementById(NOTTY_CONTAINER_ID_NAME).remove();
     expect(() => useAddEventListenerOnTheCutIcon()).to.throw(
       "notty__container required",
     );
+
   });
 
   it("should remove the toast element when the cross icon is clicked", () => {

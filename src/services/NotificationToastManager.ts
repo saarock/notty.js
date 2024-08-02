@@ -1,5 +1,5 @@
 import { nottyManager } from "./NotificationManager.js";
-import { Toast } from "../types";
+import { Toast } from "../types/index.js";
 
 class NotificationToastManager {
   public async success(toast: Toast, type = "success") {

@@ -52,7 +52,7 @@ const toastConfig: Toast = {
   icons: "bell-icon",
   position: "RIGHT",
   comeFrom: "LEFT",
-  leaveFrom: "LEFT"
+  leaveFrom: "LEFT",
   toatsClassName: "custom-toast",
   toastIconClassName: "custom-icon",
   toastMessageClassName: "custom-message",

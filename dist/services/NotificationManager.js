@@ -35,7 +35,7 @@ class NotificationManager {
                 let toast = this.queue.dequeue();
                 while (toast) {
                     const toastBox = document.createElement("div");
-                    toastBox.classList.add(`notty__${type}__toast`, `${NOTTY_TOAST_CLASS}`, `${NOTTY_TOAST_CLASS}__${toast.position || "LEFT"}`, `${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`, `${toast.toatsClassName}`);
+                    toastBox.classList.add(`notty__${type}__toast`, `${NOTTY_TOAST_CLASS}`, `${NOTTY_TOAST_CLASS}__${toast.position || "LEFT"}`, `${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`, `${toast.toastClassName}`);
                     toastBox.innerHTML = `
          <div class="notty__${type}__icon ${toast.toastIconClassName}">
          </div>
@@ -63,17 +63,18 @@ class NotificationManager {
                         if (this.intervals.has(toastBox)) {
                             const newTimer = this.intervals.get(toastBox);
                             if (newTimer) {
-                                this.removeToast(toastBox, newTimer.timeOutDelay);
+                                this.removeToast(newTimer.toast, toastBox, newTimer.timeOutDelay);
                             }
                         }
                     }));
                     const timer = {
                         startTime,
                         timeOutDelay,
+                        toast,
                     };
                     this.intervals.set(toastBox, timer);
                     nottyContainer.appendChild(toastBox);
-                    this.removeToast(toastBox, timeOutDelay);
+                    this.removeToast(toast, toastBox, timeOutDelay);
                     toast = this.queue.dequeue();
                 }
             }
@@ -84,11 +85,11 @@ class NotificationManager {
             }
         });
     }
-    removeToast(toastBox, timer) {
+    removeToast(toast, toastBox, timer) {
         return __awaiter(this, void 0, void 0, function* () {
             setTimeout(() => __awaiter(this, void 0, void 0, function* () {
                 if (toastBox.style.animationPlayState !== "paused") {
-                    yield useRemoveTost(toastBox);
+                    yield useRemoveTost(toast, toastBox);
                 }
             }), timer);
         });

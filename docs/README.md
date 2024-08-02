@@ -31,6 +31,9 @@ The `Toast` interface defines the properties that can be used to configure a toa
 - **toastMessageClassName**: _(Optional)_ `string`  
   A custom CSS class name for styling the toast message.
 
+- **leaveFrom**: _(Optional)_ `string`
+   desides toast will remove from the left or right.
+
 - **gotTo**: _(Optional)_ `string`  
   A URL to navigate to when the toast notification is clicked.
 
@@ -49,6 +52,7 @@ const toastConfig: Toast = {
   icons: "bell-icon",
   position: "RIGHT",
   comeFrom: "LEFT",
+  leaveFrom: "LEFT"
   toatsClassName: "custom-toast",
   toastIconClassName: "custom-icon",
   toastMessageClassName: "custom-message",

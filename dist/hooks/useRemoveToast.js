@@ -8,14 +8,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { NOTTY_ANIMATE_FADE_IN_CLASS, NOTTY_ANIMATE_FADE_OUT_CLASS, } from "../constant.js";
-export default function useRemoveTost(toastBox) {
+export default function useRemoveTost(toast, toastBox) {
     return __awaiter(this, void 0, void 0, function* () {
         function removeToast() {
             toastBox.remove();
         }
         function fadeOut() {
-            toastBox.classList.remove(`${NOTTY_ANIMATE_FADE_IN_CLASS}__LEFT`);
-            toastBox.classList.add(`${NOTTY_ANIMATE_FADE_OUT_CLASS}__RIGHT`);
+            toastBox.classList.remove(`${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`);
+            toastBox.classList.add(`${NOTTY_ANIMATE_FADE_OUT_CLASS}__${toast.leaveFrom || "LEFT"}`);
             setTimeout(removeToast, 500);
         }
         if (toastBox.style.animationPlayState !== "paused") {

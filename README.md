@@ -169,7 +169,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
        notty.success({
          message: messageInput.value || "Success Message",
          comeFrom: comeFromSelect.value,
-         leaverFrom: leaveFromSelect.value,
+         leaveFrom: leaveFromSelect.value,
          position: positionSelect.value,
          timeOut: parseInt(timeOutInput.value) || 5000,
        });
@@ -179,7 +179,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
        notty.loading({
          message: messageInput.value || "Loading Message",
          comeFrom: comeFromSelect.value,
-         leaverFrom: leaveFromSelect.value,
+         leaveFrom: leaveFromSelect.value,
          position: positionSelect.value,
          timeOut: parseInt(timeOutInput.value) || 5000,
        });
@@ -189,7 +189,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
        notty.error({
          message: messageInput.value || "Error Message",
          comeFrom: comeFromSelect.value,
-         leaverFrom: leaveFromSelect.value,
+         leaveFrom: leaveFromSelect.value,
          position: positionSelect.value,
          timeOut: parseInt(timeOutInput.value) || 5000,
        });

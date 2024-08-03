@@ -1,5 +1,6 @@
 import {
   NOTTY_ANIMATE_FADE_IN_CLASS,
+  NOTTY_ANIMATE_FADE_OUT_CLASS,
   NOTTY_CONTAINER_ID_NAME,
   NOTTY_CROSS_ICON_CLASS,
   NOTTY_TOAST_CLASS,
@@ -10,6 +11,8 @@ import useRemoveTost from "../hooks/useRemoveToast.js";
 import { Queue } from "../models/Queue.js";
 import { Timer, Toast } from "../types/index.js";
 import { time } from "../utils/index.js";
+
+
 
 /**
  * Notification manager class where all the login are written
@@ -57,7 +60,7 @@ class NotificationManager {
           `${NOTTY_TOAST_CLASS}`,
           `${NOTTY_TOAST_CLASS}__${toast.position || "LEFT"}`,
           `${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`,
-          `${toast.toatsClassName}`,
+          `${toast.toastClassName}`,
         );
         toastBox.innerHTML = `
          <div class="notty__${type}__icon ${toast.toastIconClassName}">
@@ -100,7 +103,7 @@ class NotificationManager {
           if (this.intervals.has(toastBox)) {
             const newTimer: Timer | undefined = this.intervals.get(toastBox);
             if (newTimer) {
-              this.removeToast(toastBox, newTimer.timeOutDelay);
+              this.removeToast(newTimer.toast, toastBox, newTimer.timeOutDelay);
             }
           }
         });
@@ -108,6 +111,7 @@ class NotificationManager {
         const timer: Timer = {
           startTime,
           timeOutDelay,
+          toast,
         };
 
         this.intervals.set(toastBox, timer);
@@ -117,7 +121,7 @@ class NotificationManager {
          * remove toast after certain timer
          */
 
-        this.removeToast(toastBox, timeOutDelay);
+        this.removeToast(toast, toastBox, timeOutDelay);
 
         toast = this.queue.dequeue();
       }
@@ -133,10 +137,10 @@ class NotificationManager {
    * @param toastBox
    * @note Remove the toast with the help of the hooks;
    */
-  private async removeToast(toastBox: HTMLDivElement, timer: number) {
+  private async removeToast(toast: Toast, toastBox: HTMLDivElement, timer: number) {
     setTimeout(async () => {
       if (toastBox.style.animationPlayState !== "paused") {
-        await useRemoveTost(toastBox);
+        await useRemoveTost(toast, toastBox);
       }
     }, timer);
   }

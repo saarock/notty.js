@@ -117,28 +117,40 @@
   }
 }
 
-/* Define keyframes for the 'come' animation */
-@keyframes come {
+
+@keyframes comeFromLeft {
   0% {
     opacity: 0;
     transform: translateX(-100%);
   }
-  90% {
-    transform: translateX(10%);
+  60% {
+    transform: translateX(5%);
   }
 
+  70% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(5%);
+  }
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-@keyframes comeRight {
+@keyframes comeFromRight {
   0% {
     opacity: 0;
     transform: translateX(100%);
   }
-  90% {
+  60% {
+    transform: translateX(-10%);
+  }
+  70% {
+    transform: translateX(10%);
+  }
+  80% {
     transform: translateX(-10%);
   }
   100% {
@@ -151,16 +163,16 @@
 .notty__animate__fadeIn__LEFT {
   transform: translateX(-20deg);
   margin: 1rem;
-  animation: come 0.5s ease-in-out;
+  animation: comeFromLeft 0.5s ease-in-out;
 }
 
 .notty__animate__fadeIn__RIGHT {
   transform: translateX(20deg);
   margin: 1rem;
-  animation: comeRight 0.5s ease-in-out;
+  animation: comeFromRight 0.5s ease-in-out;
 }
 
-@keyframes goLEFT {
+@keyframes leaveFromLeft {
   0% {
     opacity: 1;
     transform: translateX(10%);
@@ -173,7 +185,7 @@
 
   90% {
     opacity: 0.4;
-    transform: translateX(-180%);
+    transform: translateX(-100%);
   }
 
   100% {
@@ -182,7 +194,7 @@
   }
 }
 
-@keyframes goRIGHT {
+@keyframes leaveFromRight {
   0% {
     opacity: 1;
     transform: translateX(-10%);
@@ -190,12 +202,12 @@
 
   10% {
     opacity: 1;
-    transform: translateX(-5%);
+    transform: translateX(-20%);
   }
 
   90% {
     opacity: 0.4;
-    transform: translateX(180%);
+    transform: translateX(100%);
   }
 
   100% {
@@ -204,15 +216,10 @@
   }
 }
 
-/* Apply the animation to an element with the class '.notty__animation__fadeOut' */
 .notty__animate__fadeOut__RIGHT {
-  animation: goLEFT 0.5s ease-in-out;
-  /* Apply the 'go' animation with a duration of 1 second, easing function of ease-in-out */
-  transform: translateX(-20deg);
+  animation: leaveFromRight 0.5s ease-in-out;
 }
 
 .notty__animate__fadeOut__LEFT {
-  animation: goLEFT 0.5s ease-in-out;
-  /* Apply the 'go' animation with a duration of 1 second, easing function of ease-in-out */
-  transform: translateX(-20deg);
+  animation: leaveFromLeft 0.5s ease-in-out;
 }

@@ -37,9 +37,16 @@ describe("useRemoveToast", () => {
     expect(document.getElementById("toastBox")).to.not.be.null;
   });
 
+<<<<<<< HEAD
+  it('should remove the toastBox element immediately if no animation is set', (done) => {
+    const toastBox = document.getElementById('toastBox');
+    
+    toastBox.style.animationPlayState = '';
+=======
   it("should remove the toastBox element immediately if no animation is set", (done) => {
     const toastBox = document.getElementById("toastBox");
     toastBox.style.animationPlayState = "";
+>>>>>>> e91dea487c7fd00e10ee61d284595fe001755968
     useRemoveToast(toastBox);
 
     setTimeout(() => {

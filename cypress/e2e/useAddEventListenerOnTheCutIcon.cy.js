@@ -16,15 +16,21 @@ describe('useAddEventListenerOnTheCutIcon', () => {
 
   it('should throw an error if NOTTY_CONTAINER_ID_NAME element is missing', () => {
     document.getElementById(NOTTY_CONTAINER_ID_NAME).remove();
-    expect(() => useAddEventListenerOnTheCutIcon()).to.throw('notty__container required');
+    
+    try {
+      await useAddEventListenerOnTheCutIcon();
+      throw new Error('Expected error was not thrown');
+    } catch (err) {
+      expect(err.message).to.equal('notty__container required');
+    }
+
   });
 
   it('should remove the toast element when the cross icon is clicked', (done) => {
     useAddEventListenerOnTheCutIcon();
     const crossIcon = document.querySelector(`.${NOTTY_CROSS_ICON_CLASS}`);
     const toast = document.querySelector(`.${NOTTY_TOAST_CLASS}`);
-
-    // Simulate click on cross icon
+    
     crossIcon.click();
 
     // Check if the toast element is removed after the animation

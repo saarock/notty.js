@@ -2,12 +2,17 @@
 
 Thank you for considering contributing to Notty! Here are some guidelines to help you get started.
 
-## Adding code
-If you change/add code, you need to be sure that it doesn't make conflicts, before consider to create a PR run all the tests with this command:
-```   
-   npx cypress run
+
+# Before Creating a PR:
+1. Run Tests: Execute npx cypress run to run all tests. Ensure that all tests pass before proceeding.
+2. TypeScript Imports: When importing modules in TypeScript, include the .js extension, like so:
 ```
-It will run all the cypress tests and if all the tests passes you can create a PR.
+import { someFunction } from "./index.js";
+
+```
+This ensures proper module resolution in the final JavaScript output.
+Following these steps will help maintain code quality and consistency.
+
 
 ## How to Report Bugs
 

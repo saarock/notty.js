@@ -62,7 +62,9 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
        message: "This is a success message",
        timeOut: 5000,
        position: "LEFT",
-       comeFrom: "BOTTOM",
+       comeFrom: "LEFT",
+       leaveFrom: "RIGHT"
+
      });
    </script>
    ```
@@ -75,11 +77,6 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 
    ```php
    function enqueue_notty_toast_assets() {
-       // Enqueue Tailwind CSS
-       wp_enqueue_style('tailwindcss', 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-
-       // Enqueue Prism.js CSS
-       wp_enqueue_style('prismjs', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css');
 
        // Enqueue Notty Toast Library CSS
        wp_enqueue_style('notty-toast-css', get_template_directory_uri() . '/path-to-your/notty.css');
@@ -87,9 +84,6 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
        // Enqueue Notty Toast Library JS
        wp_enqueue_script('notty-toast-js', get_template_directory_uri() . '/path-to-your/dist/index.js', array(), false, true);
 
-       // Enqueue Prism.js JS
-       wp_enqueue_script('prismjs-js', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js', array(), false, true);
-       wp_enqueue_script('prismjs-js-components', 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js', array(), false, true);
    }
    add_action('wp_enqueue_scripts', 'enqueue_notty_toast_assets');
    ```

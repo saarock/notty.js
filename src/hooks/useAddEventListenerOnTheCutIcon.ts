@@ -7,7 +7,6 @@ import {
 
 export default async function useAddEventListenerOnTheCutIcon() {
   const nottyContainer = document.getElementById(`${NOTTY_CONTAINER_ID_NAME}`);
-  console.log(nottyContainer);
   if (nottyContainer === undefined || nottyContainer == null)
     throw new Error("notty__container required");
 

@@ -4,13 +4,18 @@ Thank you for considering contributing to Notty! Here are some guidelines to hel
 
 
 # Before Creating a PR:
-1. Run Tests: Execute ``` npx cypress run ``` to run all tests. Ensure that all tests pass before proceeding.
-2. TypeScript Imports: When importing modules in TypeScript, include the .js extension, like so:
+1. Create a branch with `git checkout -b branch-name` with the name of an issue or feature that you are working on
+2. Add all your changes with `git add .`
+3. Commit all your changes with a clear description of what you changed with the command `git commit -m "your description"`
+4. Push all your changes to your fork with `git push`
+6. Run Tests: Execute ``` npx cypress run ``` to run all tests. Ensure that all tests pass before proceeding.
+7. TypeScript Imports: When importing modules in TypeScript, include the .js extension, like so:
 ```
 import { someFunction } from "./index.js";
 
 ```
-3. At last also exeute ``` npx prettier . --check ``` to keep the code clean.
+6. At last also exeute ``` npx prettier . --check ``` to keep the code clean.
+7. Create your PR!
    
 This ensures proper module resolution in the final JavaScript output.
 Following these steps will help maintain code quality and consistency.

@@ -1,23 +1,22 @@
 import {
   NOTTY_ANIMATE_FADE_IN_CLASS,
-  NOTTY_ANIMATE_FADE_OUT_CLASS,
   NOTTY_CONTAINER_ID_NAME,
   NOTTY_CROSS_ICON_CLASS,
   NOTTY_TOAST_CLASS,
-} from "../constant.js";
+} from "../../../constant.js";
 
-import useAddEventListenerOnTheCutIcon from "../hooks/useAddEventListenerOnTheCutIcon.js";
-import useRemoveTost from "../hooks/useRemoveToast.js";
-import { Queue } from "../models/Queue.js";
-import { Timer, Toast } from "../types/index.js";
-import { time } from "../utils/index.js";
+import useAddEventListenerOnTheCutIcon from "../../../hooks/useAddEventListenerOnTheCutIcon.js";
+import useRemoveTost from "../../../hooks/useRemoveToast.js";
+import { Queue } from "../../../models/Queue.js";
+import { Timer, Toast } from "../../../types/index.js";
+import { time } from "../../../utils/index.js";
 
 
 
 /**
  * Notification manager class where all the login are written
  */
-class NotificationManager {
+class ToastsDeveloper {
   private queue: Queue<Toast>;
   private intervals: Map<HTMLDivElement, Timer> = new Map<
     HTMLDivElement,
@@ -156,5 +155,5 @@ class NotificationManager {
   }
 }
 
-const nottyManager = new NotificationManager();
-export { nottyManager };
+const toastsDeveloper = new ToastsDeveloper();
+export { toastsDeveloper };

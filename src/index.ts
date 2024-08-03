@@ -1,2 +1,2 @@
-import { notty } from "./services/NotificationToastManager.js";
+import { notty } from "./services/index.js";
 export { notty };

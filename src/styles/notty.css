@@ -1,4 +1,4 @@
-/*  Main container of the notty libary */
+/* Main container of the notty libary */
 #notty__container {
   width: 100vw;
   height: 100vh;
@@ -27,9 +27,41 @@
   float: left;
   clear: both;
 }
+
 .notty__toast__RIGHT {
   float: right;
   clear: both;
+}
+
+.notty__toast__TOP-LEFT {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.notty__toast__TOP-RIGHT {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.notty__toast__BOTTOM-LEFT {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.notty__toast__BOTTOM-RIGHT {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.notty__toast__CENTER {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .notty__success__toast {
@@ -79,13 +111,12 @@
   text-align: center;
   word-wrap: break-word;
 }
+
 /* Keyframes for Success Animation */
 @keyframes success-animation {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0;
   }
-
   50% {
     opacity: 1;
   }
@@ -96,27 +127,22 @@
   0% {
     transform: rotate(0deg);
   }
-
   50% {
     transform: rotate(180deg);
   }
-
   100% {
     transform: rotate(360deg);
   }
 }
 
 @keyframes loading-animation {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0;
   }
-
   50% {
     opacity: 1;
   }
 }
-
 
 @keyframes comeFromLeft {
   0% {
@@ -126,7 +152,6 @@
   60% {
     transform: translateX(5%);
   }
-
   70% {
     transform: translateX(-5%);
   }
@@ -159,6 +184,122 @@
   }
 }
 
+@keyframes comeFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  60% {
+    transform: translateY(5%);
+  }
+  70% {
+    transform: translateY(-5%);
+  }
+  80% {
+    transform: translateY(5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes comeFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  60% {
+    transform: translateY(-10%);
+  }
+  70% {
+    transform: translateY(10%);
+  }
+  80% {
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leaveFromLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(10%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(5%);
+  }
+  90% {
+    opacity: 0.4;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes leaveFromRight {
+  0% {
+    opacity: 1;
+    transform: translateX(-10%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-20%);
+  }
+  90% {
+    opacity: 0.4;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(200%);
+  }
+}
+
+@keyframes leaveFromTop {
+  0% {
+    opacity: 1;
+    transform: translateY(10%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(5%);
+  }
+  90% {
+    opacity: 0.4;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+}
+
+@keyframes leaveFromBottom {
+  0% {
+    opacity: 1;
+    transform: translateY(-10%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(-20%);
+  }
+  90% {
+    opacity: 0.4;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+}
+
 /* Apply the animation to an element with the class '.notty__animate__fadeIn' */
 .notty__animate__fadeIn__LEFT {
   transform: translateX(-20deg);
@@ -172,54 +313,30 @@
   animation: comeFromRight 0.5s ease-in-out;
 }
 
-@keyframes leaveFromLeft {
-  0% {
-    opacity: 1;
-    transform: translateX(10%);
-  }
-
-  10% {
-    opacity: 1;
-    transform: translateX(5%);
-  }
-
-  90% {
-    opacity: 0.4;
-    transform: translateX(-100%);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-200%);
-  }
+.notty__animate__fadeIn__TOP {
+  transform: translateY(-20deg);
+  margin: 1rem;
+  animation: comeFromTop 0.5s ease-in-out;
 }
 
-@keyframes leaveFromRight {
-  0% {
-    opacity: 1;
-    transform: translateX(-10%);
-  }
+.notty__animate__fadeIn__BOTTOM {
+  transform: translateY(20deg);
+  margin: 1rem;
+  animation: comeFromBottom 0.5s ease-in-out;
+}
 
-  10% {
-    opacity: 1;
-    transform: translateX(-20%);
-  }
-
-  90% {
-    opacity: 0.4;
-    transform: translateX(100%);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(200%);
-  }
+.notty__animate__fadeOut__LEFT {
+  animation: leaveFromLeft 0.5s ease-in-out;
 }
 
 .notty__animate__fadeOut__RIGHT {
   animation: leaveFromRight 0.5s ease-in-out;
 }
 
-.notty__animate__fadeOut__LEFT {
-  animation: leaveFromLeft 0.5s ease-in-out;
+.notty__animate__fadeOut__TOP {
+  animation: leaveFromTop 0.5s ease-in-out;
+}
+
+.notty__animate__fadeOut__BOTTOM {
+  animation: leaveFromBottom 0.5s ease-in-out;
 }

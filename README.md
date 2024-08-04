@@ -42,9 +42,6 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     <link rel="stylesheet" href="./src/styles/notty.css" />
   </head>
   <body class="bg-gray-900 text-white">
-    <!-- Notty uses this container, so you have to put it at the top of the file which is in every folder -->
-    <div id="notty__container"></div>
-
     <!-- Include Notty Toast Library JS -->
     <script type="module" src="./dist/index.js"></script>
   </body>

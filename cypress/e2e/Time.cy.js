@@ -12,7 +12,7 @@ describe("Time", () => {
     // Check after 2 seconds
     cy.wait(2000).then(() => {
       remainingTime = time.getRemainingTime(startTime, timeoutDelay);
-      expect(remainingTime).to.be.closeTo(timeoutDelay - 2000, 50); 
+      expect(remainingTime).to.be.closeTo(timeoutDelay - 2000, 50);
     });
 
     // Check after 6 seconds (exceeding the timeout)

@@ -17,7 +17,6 @@ import { Queue } from "../../../models/Queue.js";
 import { Timer, Toast } from "../../../types/index.js";
 import { time } from "../../../utils/index.js";
 
-
 /**
  * Notification manager class where all the login are written
  */
@@ -35,16 +34,28 @@ class ToastsDeveloper {
   constructor() {
     this.queue = new Queue<Toast>(2);
     this.nottyContainer = document.createElement("div") as HTMLDivElement;
-    this.nottyContainer.classList.add(`${NOTTY_CONTAINER_CLASS_NAME}`, `notty__child_parent`);
+    this.nottyContainer.classList.add(
+      `${NOTTY_CONTAINER_CLASS_NAME}`,
+      `notty__child_parent`,
+    );
 
     this.nottyLeftChild = document.createElement("div") as HTMLDivElement;
-    this.nottyLeftChild.classList.add(`${NOTTY_CONTAINER_LEFT_CHILD__CLASS_NAME}`, `notty__child_parent`);
+    this.nottyLeftChild.classList.add(
+      `${NOTTY_CONTAINER_LEFT_CHILD__CLASS_NAME}`,
+      `notty__child_parent`,
+    );
 
     this.nottyMiddleChild = document.createElement("div") as HTMLDivElement;
-    this.nottyMiddleChild.classList.add(`${NOTTY_CONTAINER_MIDDLE_CHILD__CLASS_NAME}`, `notty__child_parent`);
+    this.nottyMiddleChild.classList.add(
+      `${NOTTY_CONTAINER_MIDDLE_CHILD__CLASS_NAME}`,
+      `notty__child_parent`,
+    );
 
-    this.nottyRightChild = document.createElement("div") as HTMLDivElement;;
-    this.nottyRightChild.classList.add(`${NOTTY_CONTAINER_RIGHT_CHILD__CLASS_NAME}`, `notty__child_parent`);
+    this.nottyRightChild = document.createElement("div") as HTMLDivElement;
+    this.nottyRightChild.classList.add(
+      `${NOTTY_CONTAINER_RIGHT_CHILD__CLASS_NAME}`,
+      `notty__child_parent`,
+    );
 
     this.nottyContainer.appendChild(this.nottyLeftChild);
     this.nottyContainer.appendChild(this.nottyMiddleChild);
@@ -75,8 +86,6 @@ class ToastsDeveloper {
     try {
       let toast: Toast | null = await this.queue.dequeue();
       while (toast) {
-
-
         const toastBox = document.createElement("div");
         toastBox.classList.add(
           `notty__${type}__toast`,
@@ -85,10 +94,9 @@ class ToastsDeveloper {
           `${NOTTY_TOAST_CLASS}`,
         );
 
-     
         toastBox.innerHTML = `
         <span class="${NOTTY_ICON_CLASS_NAME}">${await this.getIcon(type)} </span>
-        <div class="notty__${type}__message notty__message ${toast.toastMessageClassName? toast.toastMessageClassName : ""} ${NOTTY_MESSAGE_CLASS_NAME}">${toast.message}</div>
+        <div class="notty__${type}__message notty__message ${toast.toastMessageClassName ? toast.toastMessageClassName : ""} ${NOTTY_MESSAGE_CLASS_NAME}">${toast.message}</div>
         <div class="${NOTTY_CROSS_iCON_CLASS_NAME}"><i class="fas fa-times close-icon"></i></div>
 
         `;
@@ -135,17 +143,16 @@ class ToastsDeveloper {
 
         this.intervals.set(toastBox, timer);
         if (toast.position == "left") {
-          this.nottyLeftChild.appendChild(toastBox)
+          this.nottyLeftChild.appendChild(toastBox);
         } else if (toast.position === "right") {
-          this.nottyRightChild.appendChild(toastBox)
+          this.nottyRightChild.appendChild(toastBox);
         } else {
-          this.nottyMiddleChild.appendChild(toastBox)
+          this.nottyMiddleChild.appendChild(toastBox);
         }
 
         /**
          * remove toast after certain timer
          */
-
 
         this.removeToast(toast, toastBox, timeOutDelay);
         toast = await this.queue.dequeue();
@@ -175,23 +182,20 @@ class ToastsDeveloper {
     }, timer);
   }
 
-
-  private async getIcon(type: string):Promise<string> {
+  private async getIcon(type: string): Promise<string> {
     switch (type) {
       case "success":
         return "<i class='fas fa-check-circle success-icon''></i>";
       case "error":
-        return " <i class='fas fa-exclamation-circle error-icon'></i>"
+        return " <i class='fas fa-exclamation-circle error-icon'></i>";
       case "loading":
-        return "  <i class='fas fa-spinner fa-spin loading-icon'></i>"
-      default: 
-         throw new Error("Something wrong with the gogo at line number 85 to 95 toast types are not define");
+        return "  <i class='fas fa-spinner fa-spin loading-icon'></i>";
+      default:
+        throw new Error(
+          "Something wrong with the gogo at line number 85 to 95 toast types are not define",
+        );
     }
-
-
-  
   }
-
 
   private async initializeEventForToastRemovalByClick(): Promise<void> {
     try {

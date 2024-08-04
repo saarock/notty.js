@@ -9,7 +9,7 @@ export class Queue<T> {
     this.store = new Array<T>(size);
   }
 
- public async enqueue(data: T): Promise<void> {
+  public async enqueue(data: T): Promise<void> {
     if (data === null) {
       return;
     }

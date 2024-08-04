@@ -11,6 +11,6 @@ export interface Toast {
   toastIconClassName?: string;
   toastMessageClassName?: string;
   gotTo?: string;
-  leaveFrom? : ANIMATION_TYPE
+  leaveFrom?: ANIMATION_TYPE;
   RemoveIconClassName?: string;
 }

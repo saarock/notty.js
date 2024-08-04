@@ -63,8 +63,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
        timeOut: 5000,
        position: "LEFT",
        comeFrom: "LEFT",
-       leaveFrom: "RIGHT"
-
+       leaveFrom: "RIGHT",
      });
    </script>
    ```

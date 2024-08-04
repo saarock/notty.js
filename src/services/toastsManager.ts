@@ -1,4 +1,3 @@
-
 import { toastsDeveloper } from "./implements/toasts/toastsDeveloper.js";
 import { Toast, ToastsManagerOptions } from "../types/index.js";
 

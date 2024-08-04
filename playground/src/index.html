@@ -26,7 +26,6 @@
           <option value="left">left</option>
           <option value="right">right</option>
           <option value="middle">middle</option>
-          <option value="top">top</option>
         </select>
       </div>
       <div>
@@ -34,6 +33,9 @@
         <select id="comeFrom" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
           <option value="LEFT">LEFT</option>
           <option value="RIGHT">RIGHT</option>
+          <option value="TOP">TOP</option>
+          <option value="BOTTOM">BOTTOM</option>
+
         </select>
       </div>
       <div>
@@ -41,6 +43,8 @@
         <select id="leaveFrom" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
           <option value="LEFT">LEFT</option>
           <option value="RIGHT">RIGHT</option>
+          <option value="TOP">TOP</option>
+          <option value="BOTTOM">BOTTOM</option>
         </select>
       </div>
       <div class="flex space-x-4">
@@ -48,15 +52,13 @@
         <button type="button" id="loadingBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none">Loading</button>
         <button type="button" id="errorBtn" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none">Error</button>
       </div>
-      
     </form>
   </div>
   <!-- <div id="notty__container"></div> -->
 
-
-
+<!-- Scripts -->
+<!--<script type="module" src="../../dist/index.js"></script>-->
 <script type="module">
-
   import { notty } from "../../dist/index.js";
   const btnSuccess = document.querySelector('#successBtn');
   const btnLoading = document.querySelector('#loadingBtn');
@@ -75,8 +77,6 @@
       toatsClassName: "bg-gray-900",
       timeOut: parseInt(timeOutInput.value) || 5000,
       leaveFrom: leaveFromSelect.value
-
-
     });
   });
 
@@ -99,8 +99,6 @@
       timeOut: parseInt(timeOutInput.value) || 5000,
     });
   });
-
-
 </script>
 
 <!-- GitHub Link -->

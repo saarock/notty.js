@@ -1,1 +1,1 @@
-export type ANIMATION_TYPE = "LEFT" | "RIGHT"
+export type ANIMATION_TYPE = "left" | "right"

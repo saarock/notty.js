@@ -7,16 +7,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { NOTTY_ANIMATE_FADE_OUT_CLASS, NOTTY_CONTAINER_ID_NAME, NOTTY_CROSS_ICON_CLASS, NOTTY_TOAST_CLASS, } from "../constant.js";
+import { NOTTY_ANIMATE_FADE_OUT_CLASS, NOTTY_CONTAINER_CLASS_NAME, NOTTY_CROSS_iCON_CLASS_NAME, NOTTY_TOAST_CLASS, } from "../constant.js";
 export default function useAddEventListenerOnTheCutIcon() {
     return __awaiter(this, void 0, void 0, function* () {
-        const nottyContainer = document.getElementById(`${NOTTY_CONTAINER_ID_NAME}`);
-        console.log(nottyContainer);
+        const nottyContainer = document.querySelector(`.${NOTTY_CONTAINER_CLASS_NAME}`);
         if (nottyContainer === undefined || nottyContainer == null)
             throw new Error("notty__container required");
         nottyContainer.addEventListener("click", (event) => {
             const target = event.target;
-            if (target.closest(`.${NOTTY_CROSS_ICON_CLASS}`)) {
+            if (target.closest(`.${NOTTY_CROSS_iCON_CLASS_NAME}`)) {
                 const toast = target.closest(`.${NOTTY_TOAST_CLASS}`);
                 if (toast) {
                     toast.style.animationPlayState = "running";

@@ -5,7 +5,7 @@ export interface Toast {
   timeOut?: number;
   nottyClass?: number;
   icons?: string;
-  position?: ANIMATION_TYPE;
+  position?: "left" | "right" | "middle";
   comeFrom?: ANIMATION_TYPE;
   toastClassName?: string;
   toastIconClassName?: string;

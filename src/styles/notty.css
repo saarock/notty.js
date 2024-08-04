@@ -1,83 +1,99 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css);
+
+
 /*  Main container of the notty libary */
-#notty__container {
+.notty__container {
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
   position: fixed;
   top: 0;
-  right: 0;
   pointer-events: none;
+  right: 0;
+  display: flex;
+
 }
 
-.notty__toast {
+.notty__container .notty__child_parent {
+  width: 50%;
+  margin: 1rem;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.notty__container div:nth-child(3) {
+  align-items: flex-end;
+}
+
+.notty__container div:nth-child(2) {
+  align-items: center;
+}
+
+.notty__container div:nth-child(1) {
+  align-items: flex-start;
+}
+
+
+/* Base styles for the toast messages */
+.notty__container  .notty__child_parent .notty__toast {
   pointer-events: auto;
-  color: white;
   display: flex;
   justify-content: space-between;
-  width: 23rem;
-  min-height: 4rem;
-  max-height: 30rem;
   align-items: center;
-  border-radius: 0.6rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
+  width: 22rem;
+  margin: 0.7rem;
+  min-height: 4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.notty__toast__LEFT {
-  float: left;
-  clear: both;
-}
-.notty__toast__RIGHT {
-  float: right;
-  clear: both;
-}
-
+/* Success message styles */
 .notty__success__toast {
-  background-color: #005500;
+  background-color: #e0f2e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
 }
 
+/* Error message styles */
 .notty__error__toast {
-  background-color: rgb(208, 104, 102);
+  background-color: #fce4e4;
+  color: #c62828;
+  border: 1px solid #f8bbd0;
 }
 
+/* Loading message styles */
 .notty__loading__toast {
-  background-color: rgb(181, 177, 0);
-}
-
-.notty__cross__icon {
-  font-size: 1.3rem;
-  cursor: pointer;
-  margin: 0.3rem;
-  font-weight: bold;
-  color: white;
-}
-
-/* CSS for Success Icon */
-.notty__success__icon::before {
-  content: "\2713";
-  font-size: 1.5rem;
-  margin: 0.3rem;
-  animation: success-animation 1.5s infinite;
-}
-
-.notty__error__icon::before {
-  content: "\26D4";
-  font-size: 1.5rem;
-  margin: 0.3rem;
-  animation: warning-animation 1.5s infinite;
-}
-
-/* CSS for Loading Icon */
-.notty__loading__icon::before {
-  content: "\2022 \2022 \2022";
-  font-size: 1.5rem;
-  margin: 0.3rem;
-  animation: loading-animation 1s infinite;
+  background-color: #e3f2fd;
+  color: #01579b;
+  border: 1px solid #81d4fa;
 }
 
 .notty__message {
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  word-wrap: break-word;
+  word-break: break-all;
+  margin: 1rem;
+}
+
+.notty_icon {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+.notty__cross__icon {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
 }
 /* Keyframes for Success Animation */
 @keyframes success-animation {
@@ -162,13 +178,11 @@
 /* Apply the animation to an element with the class '.notty__animate__fadeIn' */
 .notty__animate__fadeIn__LEFT {
   transform: translateX(-20deg);
-  margin: 1rem;
   animation: comeFromLeft 0.5s ease-in-out;
 }
 
 .notty__animate__fadeIn__RIGHT {
   transform: translateX(20deg);
-  margin: 1rem;
   animation: comeFromRight 0.5s ease-in-out;
 }
 

@@ -7,45 +7,49 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { NOTTY_ANIMATE_FADE_IN_CLASS, NOTTY_CONTAINER_ID_NAME, NOTTY_CROSS_ICON_CLASS, NOTTY_TOAST_CLASS, } from "../../../constant.js";
+import { NOTTY_CROSS_iCON_CLASS_NAME, NOTTY_ANIMATE_FADE_IN_CLASS, NOTTY_CONTAINER_CLASS_NAME, NOTTY_CONTAINER_LEFT_CHILD__CLASS_NAME, NOTTY_CONTAINER_MIDDLE_CHILD__CLASS_NAME, NOTTY_CONTAINER_RIGHT_CHILD__CLASS_NAME, NOTTY_TOAST_CLASS, NOTTY_MESSAGE_CLASS_NAME, NOTTY_ICON_CLASS_NAME, } from "../../../constant.js";
 import useAddEventListenerOnTheCutIcon from "../../../hooks/useAddEventListenerOnTheCutIcon.js";
 import useRemoveTost from "../../../hooks/useRemoveToast.js";
 import { Queue } from "../../../models/Queue.js";
 import { time } from "../../../utils/index.js";
 class ToastsDeveloper {
     constructor() {
+        this.toasts = [];
         this.intervals = new Map();
         this.queue = new Queue(2);
-        (() => __awaiter(this, void 0, void 0, function* () {
-            yield this.initializeEventForToastRemovalByClick();
-        }))();
+        this.nottyContainer = document.createElement("div");
+        this.nottyContainer.classList.add(`${NOTTY_CONTAINER_CLASS_NAME}`, `notty__child_parent`);
+        this.nottyLeftChild = document.createElement("div");
+        this.nottyLeftChild.classList.add(`${NOTTY_CONTAINER_LEFT_CHILD__CLASS_NAME}`, `notty__child_parent`);
+        this.nottyMiddleChild = document.createElement("div");
+        this.nottyMiddleChild.classList.add(`${NOTTY_CONTAINER_MIDDLE_CHILD__CLASS_NAME}`, `notty__child_parent`);
+        this.nottyRightChild = document.createElement("div");
+        ;
+        this.nottyRightChild.classList.add(`${NOTTY_CONTAINER_RIGHT_CHILD__CLASS_NAME}`, `notty__child_parent`);
+        this.nottyContainer.appendChild(this.nottyLeftChild);
+        this.nottyContainer.appendChild(this.nottyMiddleChild);
+        this.nottyContainer.appendChild(this.nottyRightChild);
+        document.body.appendChild(this.nottyContainer);
+        this.initializeEventForToastRemovalByClick();
     }
     addToastToQueue(toast, type) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.queue.enqueue(toast);
-            yield this.showToastFromQueue(toast, type);
+            yield this.showToastFromQueue(type);
         });
     }
-    showToastFromQueue(toastMessage, type) {
+    showToastFromQueue(type) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const nottyContainer = document.getElementById(NOTTY_CONTAINER_ID_NAME);
-                if (!nottyContainer)
-                    throw new Error("NottyContainer not found");
-                let toast = this.queue.dequeue();
+                let toast = yield this.queue.dequeue();
                 while (toast) {
                     const toastBox = document.createElement("div");
-                    toastBox.classList.add(`notty__${type}__toast`, `${NOTTY_TOAST_CLASS}`, `${NOTTY_TOAST_CLASS}__${toast.position || "LEFT"}`, `${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`, `${toast.toastClassName}`);
+                    toastBox.classList.add(`notty__${type}__toast`, `${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`, `${toast.toastClassName}`, `${NOTTY_TOAST_CLASS}`);
                     toastBox.innerHTML = `
-         <div class="notty__${type}__icon ${toast.toastIconClassName}">
-         </div>
-        <div class="notty__${type}__message notty__message ${toast.toastMessageClassName}">${toast.message}</div>
-       <div class="${NOTTY_CROSS_ICON_CLASS} ${toast.RemoveIconClassName}">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="18" y1="6" x2="6" y2="18"></line>
-    <line x1="6" y1="6" x2="18" y2="18"></line>
-  </svg>
-       </div>
+        <span class="${NOTTY_ICON_CLASS_NAME}">${yield this.getIcon(type)} </span>
+        <div class="notty__${type}__message notty__message ${toast.toastMessageClassName ? toast.toastMessageClassName : ""} ${NOTTY_MESSAGE_CLASS_NAME}">${toast.message}</div>
+        <div class="${NOTTY_CROSS_iCON_CLASS_NAME}"><i class="fas fa-times close-icon"></i></div>
+
         `;
                     const timeOutDelay = (toast === null || toast === void 0 ? void 0 : toast.timeOut) ? toast.timeOut : 5000;
                     const startTime = Date.now();
@@ -73,9 +77,18 @@ class ToastsDeveloper {
                         toast,
                     };
                     this.intervals.set(toastBox, timer);
-                    nottyContainer.appendChild(toastBox);
+                    if (toast.position == "left") {
+                        this.nottyLeftChild.appendChild(toastBox);
+                    }
+                    else if (toast.position === "right") {
+                        this.nottyRightChild.appendChild(toastBox);
+                    }
+                    else {
+                        this.nottyMiddleChild.appendChild(toastBox);
+                    }
                     this.removeToast(toast, toastBox, timeOutDelay);
-                    toast = this.queue.dequeue();
+                    toast = yield this.queue.dequeue();
+                    this.toasts.push(toastBox);
                 }
             }
             catch (error) {
@@ -92,6 +105,20 @@ class ToastsDeveloper {
                     yield useRemoveTost(toast, toastBox);
                 }
             }), timer);
+        });
+    }
+    getIcon(type) {
+        return __awaiter(this, void 0, void 0, function* () {
+            switch (type) {
+                case "success":
+                    return "<i class='fas fa-check-circle success-icon''></i>";
+                case "error":
+                    return " <i class='fas fa-exclamation-circle error-icon'></i>";
+                case "loading":
+                    return "  <i class='fas fa-spinner fa-spin loading-icon'></i>";
+                default:
+                    throw new Error("Something wrong with the gogo at line number 85 to 95 toast types are not define");
+            }
         });
     }
     initializeEventForToastRemovalByClick() {

@@ -61,7 +61,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
      notty.success({
        message: "This is a success message",
        timeOut: 5000,
-       position: "LEFT",
+       position: "right",
        comeFrom: "LEFT",
        leaveFrom: "RIGHT",
      });
@@ -141,7 +141,6 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
                </div>
            </form>
        </div>
-       <div id="notty__container"></div>
        <?php wp_footer(); ?>
    </body>
    </html>

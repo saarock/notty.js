@@ -17,9 +17,9 @@ The `Toast` interface defines the properties that can be used to configure a toa
   The icon to display within the toast notification.
 
 - **position**: _(Optional)_ `"left" | "right" | "middle"`  
-  Specifies the position on the screen where the toast notification will appear. It can be either `"LEFT"` or `"RIGHT"`.
+  Specifies the position on the screen where the toast notification will appear. It can be either `"left"` or `"right" or "middle`.
 
-- **comeFrom**: _(Optional)_ `"LEFT" | "RIGHT"`  
+- **comeFrom**: _(Optional)_ `"LEFT" | "RIGHT" | "TOP" | "BOTTOM"`  
   Specifies the direction from which the toast notification will animate into view. It can be either `"LEFT"` or `"RIGHT"`.
 
 - **toatsClassName**: _(Optional)_ `string`  
@@ -31,10 +31,10 @@ The `Toast` interface defines the properties that can be used to configure a toa
 - **toastMessageClassName**: _(Optional)_ `string`  
   A custom CSS class name for styling the toast message.
 
-- **leaveFrom**: _(Optional)_ `string`
+- **leaveFrom**: _(Optional)_ `"LEFT" | "RIGHT" | "TOP" | "BOTTOM"` 
   desides toast will remove from the left or right.
 
-- **gotTo**: _(Optional)_ `string`  
+- **gotTo**: _(Optional)_ `string`  (Currently not-available)
   A URL to navigate to when the toast notification is clicked.
 
 - **RemoveIconClassName**: _(Optional)_ `string`  
@@ -50,7 +50,7 @@ const toastConfig: Toast = {
   message: "Hello, world!",
   timeOut: 3000,
   icons: "bell-icon",
-  position: "RIGHT",
+  position: "right",
   comeFrom: "LEFT",
   leaveFrom: "LEFT",
   toatsClassName: "custom-toast",

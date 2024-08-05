@@ -202,10 +202,8 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
       timeOut: parseInt(timeOutInput.value) || 5000,
     });
   });
-</script>
 
-
-     btnError.addEventListener("click", () => {
+btnError.addEventListener("click", () => {
        notty.error({
          message: messageInput.value || "Error Message",
          comeFrom: comeFromSelect.value,

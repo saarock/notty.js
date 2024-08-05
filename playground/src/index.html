@@ -6,55 +6,83 @@
   <title>Notty Toast Library Demo</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../src/styles/notty.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #000000 00%, #110505 80%, #003010 100%);
+    }
+    .form-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .form-container input, .form-container select {
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .form-container input:focus, .form-container select:focus {
+      color: black;
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+    .form-container button {
+      transition: transform 0.3s;
+    }
+    .form-container button:hover {
+      transform: translateY(-2px);
+    }
+    .github-link:hover svg {
+      color: #fff;
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-white">
-<div class="container mx-auto p-4">
-  <h1 class="text-3xl font-bold text-center mb-4">Notty Toast Library Playground</h1>
-  <div class="bg-gray-800 p-4 rounded-md mb-4">
-    <form id="toastForm" class="space-y-4">
-      <div>
-        <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
-        <input type="text" id="message" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded" placeholder="Enter toast message">
-      </div>
-      <div>
-        <label for="timeOut" class="block text-sm font-medium text-gray-300">Timeout (ms)</label>
-        <input type="number" id="timeOut" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded" placeholder="Enter timeout">
-      </div>
-      <div>
-        <label for="position" class="block text-sm font-medium text-gray-300">Position</label>
-        <select id="position" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
-          <option value="left">left</option>
-          <option value="right">right</option>
-          <option value="middle">middle</option>
-        </select>
-      </div>
-      <div>
-        <label for="comeFrom" class="block text-sm font-medium text-gray-300">Come From</label>
-        <select id="comeFrom" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
-          <option value="LEFT">LEFT</option>
-          <option value="RIGHT">RIGHT</option>
-          <option value="TOP">TOP</option>
-          <option value="BOTTOM">BOTTOM</option>
+<body class="flex items-center justify-center min-h-screen text-white">
 
+<div class="form-container max-w-lg w-full p-8 rounded-lg shadow-lg">
+  <h1 class="text-4xl font-extrabold text-center mb-6">Notty Toast Library</h1>
+  <form id="toastForm" class="space-y-6">
+    <div>
+      <label for="message" class="block text-sm font-medium">Message</label>
+      <input type="text" id="message" class="mt-1 block w-full bg-transparent border border-gray-300 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter toast message">
+    </div>
+    <div>
+      <label for="timeOut" class="block text-sm font-medium">Timeout (ms)</label>
+      <input type="number" id="timeOut" class="mt-1 block w-full bg-transparent border border-gray-300 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter timeout">
+    </div>
+    <div>
+      <label for="position" class="block text-sm font-medium">Position</label>
+      <select id="position" class="mt-1 block w-full bg-transparent border border-gray-300 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <option value="left">Left</option>
+        <option value="right">Right</option>
+        <option value="middle">Middle</option>
+      </select>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label for="comeFrom" class="block text-sm font-medium">Come From</label>
+        <select id="comeFrom" class="mt-1 block w-full bg-transparent border border-gray-300 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="LEFT">Left</option>
+          <option value="RIGHT">Right</option>
+          <option value="TOP">Top</option>
+          <option value="BOTTOM">Bottom</option>
         </select>
       </div>
       <div>
-        <label for="leaveFrom" class="block text-sm font-medium text-gray-300">Leave From</label>
-        <select id="leaveFrom" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
-          <option value="LEFT">LEFT</option>
-          <option value="RIGHT">RIGHT</option>
-          <option value="TOP">TOP</option>
-          <option value="BOTTOM">BOTTOM</option>
+        <label for="leaveFrom" class="block text-sm font-medium">Leave From</label>
+        <select id="leaveFrom" class="mt-1 block w-full bg-transparent border border-gray-300 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="LEFT">Left</option>
+          <option value="RIGHT">Right</option>
+          <option value="TOP">Top</option>
+          <option value="BOTTOM">Bottom</option>
         </select>
       </div>
-      <div class="flex space-x-4">
-        <button type="button" id="successBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none">Success</button>
-        <button type="button" id="loadingBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none">Loading</button>
-        <button type="button" id="errorBtn" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none">Error</button>
-      </div>
-    </form>
-  </div>
-  
+    </div>
+    <div class="flex space-x-4 justify-center">
+      <button type="button" id="successBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 shadow-md">Success</button>
+      <button type="button" id="loadingBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-md">Loading</button>
+      <button type="button" id="errorBtn" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 shadow-md">Error</button>
+    </div>
+  </form>
+</div>
+
 <script type="module">
   import { notty } from "../../dist/index.js";
   const btnSuccess = document.querySelector('#successBtn');
@@ -100,8 +128,8 @@
 
 <!-- GitHub Link -->
 <div class="fixed bottom-4 right-4 text-gray-400">
-  <a href="https://github.com/saarock/notty" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1">
-    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  <a href="https://github.com/saarock/notty" target="_blank" rel="noopener noreferrer" class="github-link flex items-center space-x-2 hover:text-white">
+    <svg class="h-5 w-5 transition-transform transform hover:scale-110" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.419 2.865 8.17 6.839 9.491.5.092.682-.217.682-.48 0-.237-.008-.866-.013-1.699-2.782.604-3.37-1.344-3.37-1.344-.454-1.153-1.108-1.46-1.108-1.46-.906-.618.069-.605.069-.605 1.003.07 1.531 1.03 1.531 1.03.892 1.531 2.34 1.089 2.913.831.092-.645.35-1.088.635-1.338-2.22-.253-4.555-1.11-4.555-4.942 0-1.09.39-1.984 1.032-2.68-.103-.253-.448-1.27.097-2.647 0 0 .84-.268 2.75 1.025.8-.223 1.654-.334 2.504-.338.848.004 1.705.115 2.504.338 1.908-1.293 2.746-1.025 2.746-1.025.548 1.377.201 2.394.098 2.647.644.696 1.031 1.59 1.031 2.68 0 3.841-2.338 4.686-4.567 4.934.359.308.678.916.678 1.847 0 1.334-.012 2.411-.012 2.74 0 .266.18.577.688.478C17.138 18.165 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
     </svg>
     <span>View on GitHub</span>

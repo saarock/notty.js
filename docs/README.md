@@ -31,10 +31,10 @@ The `Toast` interface defines the properties that can be used to configure a toa
 - **toastMessageClassName**: _(Optional)_ `string`  
   A custom CSS class name for styling the toast message.
 
-- **leaveFrom**: _(Optional)_ `"LEFT" | "RIGHT" | "TOP" | "BOTTOM"` 
+- **leaveFrom**: _(Optional)_ `"LEFT" | "RIGHT" | "TOP" | "BOTTOM"`
   desides toast will remove from the left or right.
 
-- **gotTo**: _(Optional)_ `string`  (Currently not-available)
+- **gotTo**: _(Optional)_ `string` (Currently not-available)
   A URL to navigate to when the toast notification is clicked.
 
 - **RemoveIconClassName**: _(Optional)_ `string`  

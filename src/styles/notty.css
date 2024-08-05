@@ -68,6 +68,13 @@
   border: 1px solid #81d4fa;
 }
 
+/* Warning message styles */
+.notty__warning__toast {
+  background-color: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc80;
+}
+
 .notty__message {
   border-radius: 4px;
   font-family: Arial, sans-serif;

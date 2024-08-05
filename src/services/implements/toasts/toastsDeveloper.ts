@@ -96,7 +96,7 @@ class ToastsDeveloper {
 
         toastBox.innerHTML = `
         <span class="${NOTTY_ICON_CLASS_NAME}">${await this.getIcon(type)} </span>
-        <div class="notty__${type}__message notty__message ${toast.toastMessageClassName ? toast.toastMessageClassName : ""} ${NOTTY_MESSAGE_CLASS_NAME}">${toast.message}</div>
+        <div class="notty__${type}__message notty__message ${toast.toastMessageClassName ? toast.toastMessageClassName : ""} ${NOTTY_MESSAGE_CLASS_NAME}">${toast.message || "Give me something to show please."}</div>
         <div class="${NOTTY_CROSS_iCON_CLASS_NAME}"><i class="fas fa-times close-icon"></i></div>
 
         `;
@@ -185,14 +185,16 @@ class ToastsDeveloper {
   private async getIcon(type: string): Promise<string> {
     switch (type) {
       case "success":
-        return "<i class='fas fa-check-circle success-icon''></i>";
+        return "<i class='fas fa-check-circle success-icon'></i>";
       case "error":
-        return " <i class='fas fa-exclamation-circle error-icon'></i>";
+        return "<i class='fas fa-exclamation-circle error-icon'></i>";
       case "loading":
-        return "  <i class='fas fa-spinner fa-spin loading-icon'></i>";
+        return "<i class='fas fa-spinner fa-spin loading-icon'></i>";
+      case "warning":
+        return "<i class='fas fa-exclamation-triangle warning-icon'></i>";
       default:
         throw new Error(
-          "Something wrong with the gogo at line number 85 to 95 toast types are not define",
+          "Something went wrong with the toast types definition between line 85 to 95. The specified type is not defined.",
         );
     }
   }

@@ -78,6 +78,7 @@
     <div class="flex space-x-4 justify-center">
       <button type="button" id="successBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 shadow-md">Success</button>
       <button type="button" id="loadingBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-md">Loading</button>
+      <button type="button" id="warningBtn" class="bg-yellow-700 hover:bg-yellow-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow-md">Warning</button>
       <button type="button" id="errorBtn" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400 shadow-md">Error</button>
     </div>
   </form>
@@ -93,6 +94,7 @@
   const positionSelect = document.querySelector('#position');
   const comeFromSelect = document.querySelector('#comeFrom');
   const leaveFromSelect = document.querySelector('#leaveFrom');
+  const warningBtn = document.querySelector('#warningBtn');
 
   btnSuccess.addEventListener("click", () => {
     notty.success({
@@ -124,6 +126,17 @@
       timeOut: parseInt(timeOutInput.value) || 5000,
     });
   });
+
+
+  warningBtn.addEventListener("click", () => {
+    notty.warning({
+      message: messageInput.value || "Warning Message",
+      position: positionSelect.value,
+      comeFrom: comeFromSelect.value,
+      leaveFrom: leaveFromSelect.value,
+      timeOut: parseInt(timeOutInput.value) || 5000,
+    });
+  })
 </script>
 
 <!-- GitHub Link -->

@@ -13,6 +13,10 @@ class ToastsManager implements ToastsManagerOptions {
   public async loading(toast: Toast, type = "loading") {
     await toastsDeveloper.addToastToQueue(toast, type);
   }
+
+  public async warning(toast: Toast, type = "warning") {
+    await toastsDeveloper.addToastToQueue(toast, type);
+  }
 }
 
 const notty: ToastsManagerOptions = new ToastsManager();

@@ -125,12 +125,12 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
                    </select>
                </div>
                 <div>
-        <label for="leaveFrom" class="block text-sm font-medium text-gray-300">Leave From</label>
-        <select id="leaveFrom" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
-          <option value="LEFT">LEFT</option>
-          <option value="RIGHT">RIGHT</option>
-        </select>
-      </div>
+                  <label for="leaveFrom" class="block text-sm font-medium text-gray-300">Leave From</label>
+                   <select id="leaveFrom" class="mt-1 block w-full bg-gray-700 border border-gray-600 text-white py-2 px-3 rounded">
+                    <option value="LEFT">LEFT</option>
+                    <option value="RIGHT">RIGHT</option>
+                  </select>
+               </div>
                <div class="flex space-x-4">
                    <button type="button" id="successBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none">Success</button>
                    <button type="button" id="loadingBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none">Loading</button>
@@ -189,8 +189,8 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
          timeOut: parseInt(timeOutInput.value) || 5000,
        });
      });
-   </script>
-   ```
+     </script>
+  ```
 
 ## License
 

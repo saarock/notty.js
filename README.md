@@ -149,51 +149,52 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 
    Add the following script to initialize and use the Notty Toast Library in your template file or custom shortcode.
 
-   ```html
-   <script type="module">
-     import { notty } from "<?php echo get_template_directory_uri(); ?>/path-to-your/dist/index.js";
+```
 
-     const btnSuccess = document.querySelector("#successBtn");
-     const btnLoading = document.querySelector("#loadingBtn");
-     const warningBtn = document.querySelector('#warningBtn');
-     const btnError = document.querySelector("#errorBtn");
-     const messageInput = document.querySelector("#message");
-     const timeOutInput = document.querySelector("#timeOut");
-     const positionSelect = document.querySelector("#position");
-     const comeFromSelect = document.querySelector("#comeFrom");
-     const leaveFromSelect = document.querySelector("#leaveFrom");
+<script type="module">
+  import { notty } from "<?php echo get_template_directory_uri(); ?>/path-to-your/dist/index.js";
 
-     btnSuccess.addEventListener("click", () => {
-       notty.success({
-         message: messageInput.value || "Success Message",
-         comeFrom: comeFromSelect.value,
-         leaveFrom: leaveFromSelect.value,
-         position: positionSelect.value,
-         timeOut: parseInt(timeOutInput.value) || 5000,
-       });
-     });
+  const btnSuccess = document.querySelector("#successBtn");
+  const btnLoading = document.querySelector("#loadingBtn");
+  const warningBtn = document.querySelector("#warningBtn");
+  const btnError = document.querySelector("#errorBtn");
+  const messageInput = document.querySelector("#message");
+  const timeOutInput = document.querySelector("#timeOut");
+  const positionSelect = document.querySelector("#position");
+  const comeFromSelect = document.querySelector("#comeFrom");
+  const leaveFromSelect = document.querySelector("#leaveFrom");
 
-     btnLoading.addEventListener("click", () => {
-       notty.loading({
-         message: messageInput.value || "Loading Message",
-         comeFrom: comeFromSelect.value,
-         leaveFrom: leaveFromSelect.value,
-         position: positionSelect.value,
-         timeOut: parseInt(timeOutInput.value) || 5000,
-       });
-     });
+  btnSuccess.addEventListener("click", () => {
+    notty.success({
+      message: messageInput.value || "Success Message",
+      comeFrom: comeFromSelect.value,
+      leaveFrom: leaveFromSelect.value,
+      position: positionSelect.value,
+      timeOut: parseInt(timeOutInput.value) || 5000,
+    });
+  });
 
-     btnError.addEventListener("click", () => {
-       notty.error({
-         message: messageInput.value || "Error Message",
-         comeFrom: comeFromSelect.value,
-         leaveFrom: leaveFromSelect.value,
-         position: positionSelect.value,
-         timeOut: parseInt(timeOutInput.value) || 5000,
-       });
-     });
+  btnLoading.addEventListener("click", () => {
+    notty.loading({
+      message: messageInput.value || "Loading Message",
+      comeFrom: comeFromSelect.value,
+      leaveFrom: leaveFromSelect.value,
+      position: positionSelect.value,
+      timeOut: parseInt(timeOutInput.value) || 5000,
+    });
+  });
 
-   warningBtn.addEventListener("click", () => {
+  btnError.addEventListener("click", () => {
+    notty.error({
+      message: messageInput.value || "Error Message",
+      comeFrom: comeFromSelect.value,
+      leaveFrom: leaveFromSelect.value,
+      position: positionSelect.value,
+      timeOut: parseInt(timeOutInput.value) || 5000,
+    });
+  });
+
+  warningBtn.addEventListener("click", () => {
     notty.warning({
       message: messageInput.value || "Warning Message",
       position: positionSelect.value,
@@ -201,11 +202,12 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
       leaveFrom: leaveFromSelect.value,
       timeOut: parseInt(timeOutInput.value) || 5000,
     });
-       })
-  
-        </script>
-   
-   ```
+  });
+</script>
+
+
+
+```
 
 ## License
 

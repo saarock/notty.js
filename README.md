@@ -149,7 +149,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 
    Add the following script to initialize and use the Notty Toast Library in your template file or custom shortcode.
 
-```
+```html
 
 <script type="module">
   import { notty } from "<?php echo get_template_directory_uri(); ?>/path-to-your/dist/index.js";

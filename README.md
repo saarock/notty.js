@@ -204,7 +204,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     });
   });
 </script>
-
+```
 
 
 

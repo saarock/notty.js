@@ -143,7 +143,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
        <?php wp_footer(); ?>
    </body>
    </html>
-  ```
+  
 
 3. **Initialize and Use the Library**:
 
@@ -207,7 +207,6 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 
 
 
-```
 
 ## License
 

@@ -1,1 +1,1 @@
-export * from "./toastsManager.js";
+export * from "./managers/toasts/toastsManager.js";

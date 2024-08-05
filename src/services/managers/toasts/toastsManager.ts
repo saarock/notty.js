@@ -1,5 +1,5 @@
-import { toastsDeveloper } from "./implements/toasts/toastsDeveloper.js";
-import { Toast, ToastsManagerOptions } from "../types/index.js";
+import { toastsDeveloper } from "../../developers/toasts/toastsDeveloper.js";
+import { Toast, ToastsManagerOptions } from "../../../types/index.js";
 
 class ToastsManager implements ToastsManagerOptions {
   public async success(toast: Toast, type = "success") {

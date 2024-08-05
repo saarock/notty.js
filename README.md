@@ -134,7 +134,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
                <div class="flex space-x-4">
                    <button type="button" id="successBtn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded focus:outline-none">Success</button>
                    <button type="button" id="loadingBtn" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none">Loading</button>
-                   <button type="button" id="warningBtn" class="bg-yellow-700 hover:bg-yellow-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow- 
+                   <button type="button" id="warningBtn" class="bg-yellow-700 hover:bg-yellow-600 text-white py-2 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow-
                     md">Warning</button>
                    <button type="button" id="errorBtn" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded focus:outline-none">Error</button>
                </div>
@@ -144,12 +144,13 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
    </body>
    </html>
 
+   ```
+
 3. **Initialize and Use the Library**:
 
    Add the following script to initialize and use the Notty Toast Library in your template file or custom shortcode.
 
 ```html
-
 <script type="module">
   import { notty } from "<?php echo get_template_directory_uri(); ?>/path-to-your/dist/index.js";
 
@@ -203,17 +204,17 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     });
   });
 
-btnError.addEventListener("click", () => {
-       notty.error({
-         message: messageInput.value || "Error Message",
-         comeFrom: comeFromSelect.value,
-         leaveFrom: leaveFromSelect.value,
-         position: positionSelect.value,
-         timeOut: parseInt(timeOutInput.value) || 5000,
-       });
-     });
-    </script>
-  ```
+  btnError.addEventListener("click", () => {
+    notty.error({
+      message: messageInput.value || "Error Message",
+      comeFrom: comeFromSelect.value,
+      leaveFrom: leaveFromSelect.value,
+      position: positionSelect.value,
+      timeOut: parseInt(timeOutInput.value) || 5000,
+    });
+  });
+</script>
+```
 
 ## License
 

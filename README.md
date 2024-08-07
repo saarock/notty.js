@@ -165,8 +165,8 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
   const comeFromSelect = document.querySelector("#comeFrom");
   const leaveFromSelect = document.querySelector("#leaveFrom");
 
-  btnSuccess.addEventListener("click", () => {
-    notty.success({
+  btnSuccess.addEventListener("click", async () => {
+    await notty.success({
       message: messageInput.value || "Success Message",
       comeFrom: comeFromSelect.value,
       leaveFrom: leaveFromSelect.value,
@@ -175,8 +175,8 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     });
   });
 
-  btnLoading.addEventListener("click", () => {
-    notty.loading({
+  btnLoading.addEventListener("click", async () => {
+    await notty.loading({
       message: messageInput.value || "Loading Message",
       comeFrom: comeFromSelect.value,
       leaveFrom: leaveFromSelect.value,
@@ -185,8 +185,8 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     });
   });
 
-  warningBtn.addEventListener("click", () => {
-    notty.warning({
+  warningBtn.addEventListener("click", async () => {
+   await notty.warning({
       message: messageInput.value || "Warning Message",
       position: positionSelect.value,
       comeFrom: comeFromSelect.value,
@@ -195,8 +195,8 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     });
   });
 
-  btnError.addEventListener("click", () => {
-    notty.error({
+  btnError.addEventListener("click", async () => {
+    await notty.error({
       message: messageInput.value || "Error Message",
       comeFrom: comeFromSelect.value,
       leaveFrom: leaveFromSelect.value,
@@ -217,8 +217,8 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     <script type="module">
         import { notty } from "https://cdn.jsdelivr.net/gh/saarock/notty.js@main/dist/index.js";
 
-        document.getElementById('notifyButton').addEventListener('click', () => {
-            notty.success({
+        document.getElementById('notifyButton').addEventListener('click', async () => {
+            await notty.success({
                 position: "right",
                 message: "welcome",
                 comeFrom: "BOTTOM"

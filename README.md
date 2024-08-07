@@ -214,11 +214,14 @@ Using `async/await` can significantly improve performance by allowing for non-bl
 ```
 
 ## CDN
+For css 
 
 ```html
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/saarock/notty.js@main/src/styles/notty.css">
-
+```
+For notty libary js
+```html
 
     <script type="module">
         import { notty } from "https://cdn.jsdelivr.net/gh/saarock/notty.js@main/dist/index.js";
@@ -232,7 +235,6 @@ Using `async/await` can significantly improve performance by allowing for non-bl
         });
 
     </script>
-
 ```
 
 ## License

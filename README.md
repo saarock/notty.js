@@ -192,7 +192,7 @@ Using `async/await` can significantly improve performance by allowing for non-bl
   });
 
   warningBtn.addEventListener("click", async () => {
-   await notty.warning({
+    await notty.warning({
       message: messageInput.value || "Warning Message",
       position: positionSelect.value,
       comeFrom: comeFromSelect.value,
@@ -214,27 +214,32 @@ Using `async/await` can significantly improve performance by allowing for non-bl
 ```
 
 ## CDN
-For css 
+
+For css
 
 ```html
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/saarock/notty.js@main/src/styles/notty.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/saarock/notty.js@main/src/styles/notty.css"
+/>
 ```
+
 For notty libary js
+
 ```html
+<script type="module">
+  import { notty } from "https://cdn.jsdelivr.net/gh/saarock/notty.js@main/dist/index.js";
 
-    <script type="module">
-        import { notty } from "https://cdn.jsdelivr.net/gh/saarock/notty.js@main/dist/index.js";
-
-        document.getElementById('notifyButton').addEventListener('click', async () => {
-            await notty.success({
-                position: "right",
-                message: "welcome",
-                comeFrom: "BOTTOM"
-            });
-        });
-
-    </script>
+  document
+    .getElementById("notifyButton")
+    .addEventListener("click", async () => {
+      await notty.success({
+        position: "right",
+        message: "welcome",
+        comeFrom: "BOTTOM",
+      });
+    });
+</script>
 ```
 
 ## License

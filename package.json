@@ -11,6 +11,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
+    "prettier": "npx prettier --write .",
     "prepublishOnly": "npm run build"
   },
   "keywords": [

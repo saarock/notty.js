@@ -146,8 +146,10 @@ class ToastsDeveloper {
           this.nottyLeftChild.appendChild(toastBox);
         } else if (toast.position === "right") {
           this.nottyRightChild.appendChild(toastBox);
-        } else {
+        } else if (toast.position === "middle") {
           this.nottyMiddleChild.appendChild(toastBox);
+        } else {
+          this.nottyRightChild.appendChild(toastBox);
         }
 
         /**

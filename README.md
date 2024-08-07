@@ -2,6 +2,12 @@
 
 Notty Toast Library is a JavaScript library for displaying beautiful toast notifications. This guide provides instructions for both pure JavaScript developers and WordPress developers to integrate and use the library.
 
+## Important Notice
+
+**For optimal performance, we highly recommend using `async/await` when working with the Notty library.**
+
+Using `async/await` can significantly improve performance by allowing for non-blocking operations, which is crucial for applications that rely on asynchronous tasks.
+
 ## Table of Contents
 
 1. [Installation](#installation)

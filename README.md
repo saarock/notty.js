@@ -10,6 +10,7 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
 4. [Example Integration](#example-integration)
    - [Pure JavaScript](#pure-javascript)
    - [WordPress](#wordpress)
+   - [CDN Link](#CDN)
 5. [License](#license)
 
 ## Installation
@@ -204,6 +205,41 @@ Notty Toast Library is a JavaScript library for displaying beautiful toast notif
     });
   });
 </script>
+```
+
+## CDN
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/saarock/notty.js@main/src/styles/notty.css">
+
+    <title>Notty Example</title>
+</head>
+<body>
+
+    <button id="notifyButton">Notify</button>
+
+    <script type="module">
+
+        import { notty } from "https://cdn.jsdelivr.net/gh/saarock/notty.js@main/dist/index.js";
+        
+        document.getElementById('notifyButton').addEventListener('click', () => {
+            notty.success({
+                position: "right",
+                message: "welcome",
+                comeFrom: "BOTTOM"
+            });
+        });
+
+    </script>
+</body>
+</html>
+
 ```
 
 ## License

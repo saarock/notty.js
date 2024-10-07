@@ -10,7 +10,7 @@ export interface Toast {
   toastClassName?: string;
   toastIconClassName?: string;
   toastMessageClassName?: string;
-  gotTo?: string;
+  goTo?: string;
   leaveFrom?: ANIMATION_TYPE;
   RemoveIconClassName?: string;
 }

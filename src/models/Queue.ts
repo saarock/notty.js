@@ -1,3 +1,7 @@
+/**
+ * Queue dataStructure for the toast store
+ */
+
 export class Queue<T> {
   private readonly store: T[];
   private front: number = -1;

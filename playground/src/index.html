@@ -44,6 +44,10 @@
       <input type="text" id="message" class="mt-1 block w-full bg-transparent border border-gray-300 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter toast message">
     </div>
     <div>
+      <label for="goTo" class="block text-sm font-medium">goTo</label>
+      <input type="text" id="goTo" class="mt-1 block w-full bg-transparent border border-gray-300 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter toast message">
+    </div>
+    <div>
       <label for="timeOut" class="block text-sm font-medium">Timeout (ms)</label>
       <input type="number" id="timeOut" class="mt-1 block w-full bg-transparent border border-gray-300 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter timeout">
     </div>
@@ -90,6 +94,7 @@
   const btnLoading = document.querySelector('#loadingBtn');
   const btnError = document.querySelector('#errorBtn');
   const messageInput = document.querySelector('#message');
+  const goToInput = document.querySelector('#goTo');
   const timeOutInput = document.querySelector('#timeOut');
   const positionSelect = document.querySelector('#position');
   const comeFromSelect = document.querySelector('#comeFrom');
@@ -103,7 +108,9 @@
       position: positionSelect.value,
       toatsClassName: "bg-gray-900",
       timeOut: parseInt(timeOutInput.value) || 5000,
-      leaveFrom: leaveFromSelect.value
+      leaveFrom: leaveFromSelect.value,
+      goTo:goToInput.value || "/hello"
+
     });
   });
 
@@ -113,7 +120,10 @@
       comeFrom: comeFromSelect.value,
       position: positionSelect.value,
       timeOut: parseInt(timeOutInput.value) || 5000,
-      leaveFrom: leaveFromSelect.value
+      leaveFrom: leaveFromSelect.value,
+      goTo:goToInput.value || "/hello"
+
+
     });
   });
 
@@ -124,6 +134,8 @@
       comeFrom: comeFromSelect.value,
       leaveFrom: leaveFromSelect.value,
       timeOut: parseInt(timeOutInput.value) || 5000,
+      goTo:goToInput.value || "/hello"
+
     });
   });
 
@@ -135,6 +147,9 @@
       comeFrom: comeFromSelect.value,
       leaveFrom: leaveFromSelect.value,
       timeOut: parseInt(timeOutInput.value) || 5000,
+      goTo:goToInput.value || "/hello"
+
+
     });
   })
 </script>

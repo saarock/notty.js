@@ -101,6 +101,11 @@ class ToastsDeveloper {
 
         `;
 
+        // if user give the goTo URL the this code executed
+        if (toast.goTo) {
+          this.addEventListenerOnToastMessage(toastBox, toast.goTo);
+        }
+
         // Toast timer
         const timeOutDelay = toast?.timeOut ? toast.timeOut : 5000;
         const startTime = Date.now();
@@ -209,6 +214,12 @@ class ToastsDeveloper {
         console.error("notty container error: " + error.message);
       }
     }
+  }
+
+  private addEventListenerOnToastMessage(html: HTMLDivElement, slug: string) {
+    html.addEventListener("click", () => {
+      window.location.assign(slug);
+    });
   }
 }
 

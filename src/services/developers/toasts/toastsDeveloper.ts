@@ -1,5 +1,5 @@
 import {
-  NOTTY_CROSS_iCON_CLASS_NAME,
+  NOTTY_CROSS_ICON_CLASS_NAME,
   NOTTY_ANIMATE_FADE_IN_CLASS,
   NOTTY_CONTAINER_CLASS_NAME,
   NOTTY_CONTAINER_LEFT_CHILD__CLASS_NAME,
@@ -36,7 +36,6 @@ class ToastsDeveloper {
     this.nottyContainer = document.createElement("div") as HTMLDivElement;
     this.nottyContainer.classList.add(
       `${NOTTY_CONTAINER_CLASS_NAME}`,
-      `notty__child_parent`,
     );
 
     this.nottyLeftChild = document.createElement("div") as HTMLDivElement;
@@ -95,9 +94,9 @@ class ToastsDeveloper {
         );
 
         toastBox.innerHTML = `
-        <span class="${NOTTY_ICON_CLASS_NAME}">${await this.getIcon(type)} </span>
+        <span class="${NOTTY_ICON_CLASS_NAME} ${toast.toastIconClassName ? toast.toastIconClassName : ""}">${await this.getIcon(type)} </span>
         <div class="notty__${type}__message notty__message ${toast.toastMessageClassName ? toast.toastMessageClassName : ""} ${NOTTY_MESSAGE_CLASS_NAME}">${toast.message || "Give me something to show please."}</div>
-        <div class="${NOTTY_CROSS_iCON_CLASS_NAME}"><i class="fas fa-times close-icon"></i></div>
+        <div class="${NOTTY_CROSS_ICON_CLASS_NAME} ${toast.RemoveIconClassName ? toast.RemoveIconClassName : ""}"><i class="fas fa-times close-icon"></i></div>
 
         `;
 
@@ -216,8 +215,10 @@ class ToastsDeveloper {
     }
   }
 
-  private addEventListenerOnToastMessage(html: HTMLDivElement, slug: string) {
-    html.addEventListener("click", () => {
+  private addEventListenerOnToastMessage(toastBox: HTMLDivElement, slug: string) {
+    const childDiv = toastBox.children[1]as HTMLDivElement;
+    childDiv.style.cursor = "pointer";
+    childDiv.addEventListener("click", () => {
       window.location.assign(slug);
     });
   }

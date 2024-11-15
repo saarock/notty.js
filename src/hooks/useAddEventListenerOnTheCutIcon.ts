@@ -1,7 +1,7 @@
 import {
   NOTTY_ANIMATE_FADE_OUT_CLASS,
   NOTTY_CONTAINER_CLASS_NAME,
-  NOTTY_CROSS_iCON_CLASS_NAME,
+  NOTTY_CROSS_ICON_CLASS_NAME,
   NOTTY_TOAST_CLASS,
 } from "../constant.js";
 
@@ -15,7 +15,7 @@ export default async function useAddEventListenerOnTheCutIcon(): Promise<void> {
 
     nottyContainer.addEventListener("click", (event) => {
       const target = event.target as HTMLElement;
-      if (target.closest(`.${NOTTY_CROSS_iCON_CLASS_NAME}`)) {
+      if (target.closest(`.${NOTTY_CROSS_ICON_CLASS_NAME}`)) {
         const toast = target.closest(`.${NOTTY_TOAST_CLASS}`) as HTMLElement;
         if (toast) {
           toast.style.animationPlayState = "running";

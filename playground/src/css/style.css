@@ -1,0 +1,25 @@
+body {
+    background: linear-gradient(135deg, #000000 00%, #110505 80%, #003010 100%);
+  }
+  .form-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .form-container input, .form-container select {
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .form-container input:focus, .form-container select:focus {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+  .form-container button {
+    transition: transform 0.3s;
+  }
+  .form-container button:hover {
+    transform: translateY(-2px);
+  }
+  .github-link:hover svg {
+    color: #fff;
+  }

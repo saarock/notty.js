@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { NOTTY_CROSS_iCON_CLASS_NAME, NOTTY_ANIMATE_FADE_IN_CLASS, NOTTY_CONTAINER_CLASS_NAME, NOTTY_CONTAINER_LEFT_CHILD__CLASS_NAME, NOTTY_CONTAINER_MIDDLE_CHILD__CLASS_NAME, NOTTY_CONTAINER_RIGHT_CHILD__CLASS_NAME, NOTTY_TOAST_CLASS, NOTTY_MESSAGE_CLASS_NAME, NOTTY_ICON_CLASS_NAME, } from "../../../constant.js";
+import { NOTTY_CROSS_ICON_CLASS_NAME, NOTTY_ANIMATE_FADE_IN_CLASS, NOTTY_CONTAINER_CLASS_NAME, NOTTY_CONTAINER_LEFT_CHILD__CLASS_NAME, NOTTY_CONTAINER_MIDDLE_CHILD__CLASS_NAME, NOTTY_CONTAINER_RIGHT_CHILD__CLASS_NAME, NOTTY_TOAST_CLASS, NOTTY_MESSAGE_CLASS_NAME, NOTTY_ICON_CLASS_NAME, } from "../../../constant.js";
 import useAddEventListenerOnTheCutIcon from "../../../hooks/useAddEventListenerOnTheCutIcon.js";
 import useRemoveTost from "../../../hooks/useRemoveToast.js";
 import { Queue } from "../../../models/Queue.js";
@@ -18,7 +18,7 @@ class ToastsDeveloper {
         this.intervals = new Map();
         this.queue = new Queue(2);
         this.nottyContainer = document.createElement("div");
-        this.nottyContainer.classList.add(`${NOTTY_CONTAINER_CLASS_NAME}`, `notty__child_parent`);
+        this.nottyContainer.classList.add(`${NOTTY_CONTAINER_CLASS_NAME}`);
         this.nottyLeftChild = document.createElement("div");
         this.nottyLeftChild.classList.add(`${NOTTY_CONTAINER_LEFT_CHILD__CLASS_NAME}`, `notty__child_parent`);
         this.nottyMiddleChild = document.createElement("div");
@@ -45,9 +45,9 @@ class ToastsDeveloper {
                     const toastBox = document.createElement("div");
                     toastBox.classList.add(`notty__${type}__toast`, `${NOTTY_ANIMATE_FADE_IN_CLASS}__${toast.comeFrom || "LEFT"}`, `${toast.toastClassName}`, `${NOTTY_TOAST_CLASS}`);
                     toastBox.innerHTML = `
-        <span class="${NOTTY_ICON_CLASS_NAME}">${yield this.getIcon(type)} </span>
+        <span class="${NOTTY_ICON_CLASS_NAME} ${toast.toastIconClassName ? toast.toastIconClassName : ""}">${yield this.getIcon(type)} </span>
         <div class="notty__${type}__message notty__message ${toast.toastMessageClassName ? toast.toastMessageClassName : ""} ${NOTTY_MESSAGE_CLASS_NAME}">${toast.message || "Give me something to show please."}</div>
-        <div class="${NOTTY_CROSS_iCON_CLASS_NAME}"><i class="fas fa-times close-icon"></i></div>
+        <div class="${NOTTY_CROSS_ICON_CLASS_NAME} ${toast.RemoveIconClassName ? toast.RemoveIconClassName : ""}"><i class="fas fa-times close-icon"></i></div>
 
         `;
                     if (toast.goTo) {
@@ -140,8 +140,10 @@ class ToastsDeveloper {
             }
         });
     }
-    addEventListenerOnToastMessage(html, slug) {
-        html.addEventListener("click", () => {
+    addEventListenerOnToastMessage(toastBox, slug) {
+        const childDiv = toastBox.children[1];
+        childDiv.style.cursor = "pointer";
+        childDiv.addEventListener("click", () => {
             window.location.assign(slug);
         });
     }
